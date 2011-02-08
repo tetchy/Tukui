@@ -347,7 +347,7 @@ local BorderColor = function(self)
 		else
 			self:SetBackdropBorderColor(unpack(C["media"].bordercolor))
 			healthBarBG:SetBackdropBorderColor(unpack(C["media"].bordercolor))
-			healthBar:SetStatusBarColor(unpack(C["media"].bordercolor))
+			healthBar:SetStatusBarColor(unpack(C["media"].altclasscolor))
 		end
 	end
 	

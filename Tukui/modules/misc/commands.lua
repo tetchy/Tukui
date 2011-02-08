@@ -5,6 +5,26 @@ SLASH_DISABLE_ADDON1 = "/disable"
 SlashCmdList.ENABLE_ADDON = function(s) EnableAddOn(s) LoadAddOn(s) ReloadUI() end
 SLASH_ENABLE_ADDON1 = "/enable"
 
+local function ARCH()
+	EnableAddOn("GatherMate2")
+	EnableAddOn("GatherMate2_Data")
+	EnableAddOn("MinimalArchaeology")
+	EnableAddOn("Arh")
+	ReloadUI()
+end
+SLASH_ARCH1 = "/arch"
+SlashCmdList["ARCH"] = ARCH
+
+local function ARCHY()
+	DisableAddOn("GatherMate2")
+	DisableAddOn("GatherMate2_Data")
+	DisableAddOn("MinimalArchaeology")
+	DisableAddOn("Arh")
+	ReloadUI()
+end
+SLASH_ARCHY1 = "/archy"
+SlashCmdList["ARCHY"] = ARCHY
+
 -- switch to heal layout via a command
 local function HEAL()
 	DisableAddOn("Tukui_Raid")
