@@ -267,8 +267,10 @@ local f=CreateFrame"Frame"
 f:RegisterEvent("PLAYER_LOGIN")
 f:SetScript("OnEvent", function(self)
 	local skada=_G["SkadaBarWindow"..Skada.db.profile.windows[1].name]
-	if skada:IsShown() then ChatFrame4:Hide() else ChatFrame4:Show() end
-	skada:HookScript("OnShow", function() ChatFrame4:Hide() end)
-	skada:HookScript("OnHide", function() ChatFrame4:Show() end)
-	self:UnregisterEvent("PLAYER_LOGIN")
+	if IsAddOnLoaded("Skada") then
+		if skada:IsShown() then ChatFrame4:Hide() else ChatFrame4:Show() end
+		skada:HookScript("OnShow", function() ChatFrame4:Hide() end)
+		skada:HookScript("OnHide", function() ChatFrame4:Show() end)
+		self:UnregisterEvent("PLAYER_LOGIN")
+	end
 end)

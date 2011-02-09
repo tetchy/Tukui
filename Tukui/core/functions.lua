@@ -16,6 +16,10 @@ T.PP = function(p, obj)
 	local right = TukuiInfoRight
 	local mapleft = TukuiMinimapStatsLeft
 	local mapright = TukuiMinimapStatsRight
+	local battletop = TukuiBattleNetPTopStat
+	local battlebottom = TukuiBattleNetPBottomStat
+	local goldtop = TukuiGoldPTopStat
+	local goldbottom = TukuiGoldPBottomStat
 	
 	if p == 1 then
 		obj:SetParent(left)
@@ -51,6 +55,30 @@ T.PP = function(p, obj)
 		obj:SetPoint("RIGHT", right, -30, 0)
 		obj:SetPoint('TOP', right)
 		obj:SetPoint('BOTTOM', right)
+	elseif p == 9 then
+		obj:SetParent(battletop)
+		obj:SetHeight(battletop:GetHeight())
+		obj:SetPoint("LEFT", battletop, 10, 0)
+		obj:SetPoint("TOP", battletop)
+		obj:SetPoint("BOTTOM", battletop)
+	elseif p == 10 then
+		obj:SetParent(battlebottom)
+		obj:SetHeight(battlebottom:GetHeight())
+		obj:SetPoint("LEFT", battlebottom, 10, 0)
+		obj:SetPoint("TOP", battlebottom)
+		obj:SetPoint("BOTTOM", battlebottom)
+	elseif p == 11 then
+		obj:SetParent(goldtop)
+		obj:SetHeight(goldtop:GetHeight())
+		obj:SetPoint("LEFT", goldtop, 10, 0)
+		obj:SetPoint("TOP", goldtop)
+		obj:SetPoint("BOTTOM", goldtop)
+	elseif p == 12 then
+		obj:SetParent(goldbottom)
+		obj:SetHeight(goldbottom:GetHeight())
+		obj:SetPoint("LEFT", goldbottom, 10, 0)
+		obj:SetPoint("TOP", goldbottom)
+		obj:SetPoint("BOTTOM", goldbottom)
 	end
 	
 	if TukuiMinimap then

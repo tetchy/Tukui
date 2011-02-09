@@ -3,7 +3,7 @@
 C["general"] = {
 	["autoscale"] = true,                               -- mainly enabled for users that don't want to mess with the config file
 	["uiscale"] = 0.71,                                 -- set your value (between 0.64 and 1) of your uiscale if autoscale is off
-	["overridelowtohigh"] = false,                      -- EXPERIMENTAL ONLY! override lower version to higher version on a lower reso.
+	["overridelowtohigh"] = true,                      -- EXPERIMENTAL ONLY! override lower version to higher version on a lower reso.
 	["multisampleprotect"] = true,                      -- i don't recommend this because of shitty border but, voila!
 }
 
@@ -20,11 +20,11 @@ C["unitframes"] = {
 	["targetauras"] = true,                             -- enable auras on target unit frame
 	["lowThreshold"] = 20,                              -- global low threshold, for low mana warning.
 	["targetpowerpvponly"] = true,                      -- enable power text on pvp target only
-	["totdebuffs"] = false,                             -- enable tot debuffs (high reso only)
+	["totdebuffs"] = true,                             -- enable tot debuffs (high reso only)
 	["showtotalhpmp"] = false,                          -- change the display of info text on player and target with XXXX/Total.
 	["showsmooth"] = true,                              -- enable smooth bar
 	["charportrait"] = false,                           -- do i really need to explain this?
-	["maintank"] = false,                               -- enable maintank
+	["maintank"] = true,                               -- enable maintank
 	["mainassist"] = false,                             -- enable mainassist
 	["unicolor"] = false,                               -- enable unicolor theme
 	["combatfeedback"] = true,                          -- enable combattext on player and target.
@@ -59,7 +59,7 @@ C["arena"] = {
 
 C["actionbar"] = {
 	["enable"] = true,                                  -- enable tukui action bars
-	["hotkey"] = false,                                 -- enable hotkey display because it was a lot requested
+	["hotkey"] = true,                                 -- enable hotkey display because it was a lot requested
 	["hideshapeshift"] = false,                         -- hide shapeshift or totembar because it was a lot requested.
 	["showgrid"] = true,                                -- show grid on empty button
 	["buttonsize"] = 27,                                -- normal buttons size
@@ -89,34 +89,34 @@ C["cooldown"] = {
 C["datatext"] = {
 	["fps_ms"] = 4,                                     -- show fps and ms on panels
 	["system"] = 5,                                     -- show total memory and others systems infos on panels
-	["bags"] = 0,                                       -- show space used in bags on panels
-	["gold"] = 6,                                       -- show your current gold on panels
+	["bags"] = 6,                                       -- show space used in bags on panels
+	["gold"] = 12,                                       -- show your current gold on panels
 	["wowtime"] = 8,                                    -- show time on panels
-	["guild"] = 1,                                      -- show number on guildmate connected on panels
+	["guild"] = 10,                                      -- show number on guildmate connected on panels
 	["dur"] = 2,                                        -- show your equipment durability on panels.
-	["friends"] = 3,                                    -- show number of friends connected.
+	["friends"] = 9,                                    -- show number of friends connected.
 	["dps_text"] = 0,                                   -- show a dps meter on panels
 	["hps_text"] = 0,                                   -- show a heal meter on panels
 	["power"] = 7,                                      -- show your attackpower/spellpower/healpower/rangedattackpower whatever stat is higher gets displayed
 	["haste"] = 0,                                      -- show your haste rating on panels.
 	["crit"] = 0,                                       -- show your crit rating on panels.
-	["avd"] = 0,                                        -- show your current avoidance against the level of the mob your targeting
+	["avd"] = 1,                                        -- show your current avoidance against the level of the mob your targeting
 	["armor"] = 0,                                      -- show your armor value against the level mob you are currently targeting
-	["currency"] = 0,                                   -- show your tracked currency on panels
+	["currency"] = 11,                                   -- show your tracked currency on panels
 	["hit"] = 0,
-	["mastery"] = 0,
+	["mastery"] = 3,
 	["micromenu"] = 0,
 
 	["battleground"] = true,                            -- enable 3 stats in battleground only that replace stat1,stat2,stat3.
-	["time24"] = true,                                  -- set time to 24h format.
-	["localtime"] = false,                              -- set time to local time instead of server time.
+	["time24"] = false,                                  -- set time to 24h format.
+	["localtime"] = true,                              -- set time to local time instead of server time.
 	["fontsize"] = 12,                                  -- font size for panels.
 }
 
 C["chat"] = {
 	["enable"] = true,                                  -- blah
 	["whispersound"] = true,                            -- play a sound when receiving whisper
-	["background"] = false,
+	["background"] = true,
 }
 
 C["nameplate"] = {
@@ -140,12 +140,12 @@ C["tooltip"] = {
 
 C["merchant"] = {
 	["sellgrays"] = true,                               -- automaticly sell grays?
-	["autorepair"] = true,                              -- automaticly repair?
+	["autorepair"] = false,                              -- automaticly repair?
 	["sellmisc"] = true,                                -- sell defined items automatically
 }
 
 C["error"] = {
-	["enable"] = true,                                  -- true to enable this mod, false to disable
+	["enable"] = false,                                  -- true to enable this mod, false to disable
 	filter = {                                          -- what messages to not hide
 		[INVENTORY_FULL] = true,                        -- inventory is full will not be hidden by default
 	},

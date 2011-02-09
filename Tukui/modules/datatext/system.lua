@@ -111,3 +111,5 @@ Stat:SetScript("OnLeave", function(self) self.tooltip = false GameTooltip:Hide()
 Stat:SetScript("OnUpdate", Update)
 Stat:SetScript("OnEvent", function(self, event) collectgarbage("collect") end)
 Update(Stat, 10)
+
+Stat:SetScript("OnMouseDown", function() if IsAddOnLoaded("TukuiToggleMenu") then ToggleMenu_Toggle() end end)

@@ -42,6 +42,11 @@ C["media"] = {
 	["backdropcolor"] = { .1,.1,.1 }, -- background color of tukui panels
 	["altclasscolor"] = { .6,.6,.6 }, -- Color of Unknown units (Tooltip).
 	["buttonhover"] = [[Interface\AddOns\Tukui\medias\textures\button_hover]],
+		
+	-- BattleNet Textures
+	["gold"] = [[Interface\AddOns\Tukui\medias\textures\gold]],
+	["battlenet"] = [[Interface\AddOns\Tukui\medias\textures\battlenet]],
+	["transparent"] = [[Interface\AddOns\Tukui\medias\textures\transparent]],
 	
 	-- sound
 	["whisper"] = [[Interface\AddOns\Tukui\medias\sounds\whisper.mp3]],
