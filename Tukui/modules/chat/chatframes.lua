@@ -266,8 +266,8 @@ hooksecurefunc("FCF_OpenTemporaryWindow", SetupTempChat)
 local f=CreateFrame"Frame"
 f:RegisterEvent("PLAYER_LOGIN")
 f:SetScript("OnEvent", function(self)
-	local skada=_G["SkadaBarWindow"..Skada.db.profile.windows[1].name]
 	if IsAddOnLoaded("Skada") then
+	local skada=_G["SkadaBarWindow"..Skada.db.profile.windows[1].name]
 		if skada:IsShown() then ChatFrame4:Hide() else ChatFrame4:Show() end
 		skada:HookScript("OnShow", function() ChatFrame4:Hide() end)
 		skada:HookScript("OnHide", function() ChatFrame4:Show() end)
