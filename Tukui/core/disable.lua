@@ -37,7 +37,3 @@ end
 if (IsAddOnLoaded("Gladius")) then
 	C["arena"].unitframes = false
 end
-
-if (IsAddOnLoaded("SatrinaBuffFrame") or IsAddOnLoaded("ElkBuffBars")) then
-	C["auras"].player = false
-end
