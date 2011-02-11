@@ -172,7 +172,7 @@ if C.chat.background then
 	-- CHAT BG RIGHT
 	local chatrightbg = CreateFrame("Frame", "TukuiChatBackgroundRight", TukuiInfoRight)
 	chatrightbg:CreatePanel("Transparent", T.InfoLeftRightWidth + 12, 177, "BOTTOM", TukuiInfoRight, "BOTTOM", 0, -6)
-	chatrightbg:Hide() --This will get shown if a chat exists in the bottomright corner
+	--chatrightbg:Hide() --This will get shown if a chat exists in the bottomright corner
 	
 	-- LEFT TAB PANEL
 	local tabsbgleft = CreateFrame("Frame", "TukuiTabsLeftBackground", TukuiBar1)
@@ -185,7 +185,7 @@ if C.chat.background then
 	tabsbgright:CreatePanel("Default", T.InfoLeftRightWidth, 23, "TOP", chatrightbg, "TOP", 0, -5)
 	tabsbgright:SetFrameLevel(2)
 	tabsbgright:SetFrameStrata("BACKGROUND")
-	tabsbgright:Hide() --This will get shown if a chat exists in the bottomright corner
+	--tabsbgright:Hide() --This will get shown if a chat exists in the bottomright corner
 	
 	-- [[ Create new horizontal line for chat background ]] --
 	-- HORIZONTAL LINE LEFT
