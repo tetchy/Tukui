@@ -156,7 +156,7 @@ local function CreateAuraHeader(filter, ...)
 	header:SetAttribute("minHeight", 94)
 	header:SetAttribute("xOffset", -36)
 	header:SetAttribute("wrapYOffset", -68)
-	header:SetAttribute("wrapAfter", 16)
+	header:SetAttribute("wrapAfter", 10)
 	header:SetAttribute("maxWraps", 2)
 	
 	-- look for weapons buffs
