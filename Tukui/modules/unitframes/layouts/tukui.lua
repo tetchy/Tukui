@@ -160,7 +160,7 @@ local function Shared(self, unit)
 		-- portraits
     if (C["unitframes"].charportrait == true) then
             local portrait = CreateFrame("PlayerModel", nil, health)
-            portrait.PostUpdate = function(self) self:SetAlpha(0) self:SetAlpha(0.15) end -- change the 0.15 to the alphavalue you want
+            portrait.PostUpdate = function(self) self:SetAlpha(0) self:SetAlpha(0.20) end -- change the 0.15 to the alphavalue you want
             portrait:SetAllPoints(health)
             table.insert(self.__elements, T.HidePortrait)
             self.Portrait = portrait
@@ -773,7 +773,7 @@ local function Shared(self, unit)
 		-- portraits
 		if (C["unitframes"].charportrait == true) then
             local portrait = CreateFrame("PlayerModel", nil, health)
-            portrait.PostUpdate = function(self) self:SetAlpha(0) self:SetAlpha(0.15) end -- change the 0.15 to the alphavalue you want
+            portrait.PostUpdate = function(self) self:SetAlpha(0) self:SetAlpha(0.20) end -- change the 0.15 to the alphavalue you want
             portrait:SetAllPoints(health)
             table.insert(self.__elements, T.HidePortrait)
             self.Portrait = portrait
@@ -971,7 +971,7 @@ local function Shared(self, unit)
 		-- portraits
 		if (C["unitframes"].charportrait == true) then
             local portrait = CreateFrame("PlayerModel", nil, health)
-            portrait.PostUpdate = function(self) self:SetAlpha(0) self:SetAlpha(0.15) end -- change the 0.15 to the alphavalue you want
+            portrait.PostUpdate = function(self) self:SetAlpha(0) self:SetAlpha(0.20) end -- change the 0.15 to the alphavalue you want
             portrait:SetAllPoints(health)
             table.insert(self.__elements, T.HidePortrait)
             self.Portrait = portrait
@@ -1269,7 +1269,7 @@ local function Shared(self, unit)
 		-- portraits
 		if (C["unitframes"].charportrait == true) then
             local portrait = CreateFrame("PlayerModel", nil, health)
-            portrait.PostUpdate = function(self) self:SetAlpha(0) self:SetAlpha(0.15) end -- change the 0.15 to the alphavalue you want
+            portrait.PostUpdate = function(self) self:SetAlpha(0) self:SetAlpha(0.20) end -- change the 0.15 to the alphavalue you want
             portrait:SetAllPoints(health)
             table.insert(self.__elements, T.HidePortrait)
             self.Portrait = portrait
