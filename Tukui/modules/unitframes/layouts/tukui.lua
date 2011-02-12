@@ -158,37 +158,13 @@ local function Shared(self, unit)
 		end
 
 		-- portraits
-		if (C["unitframes"].charportrait == true) then
-			local portrait = CreateFrame("PlayerModel", self:GetName().."_Portrait", self)
-			portrait:SetFrameLevel(8)
-			if T.lowversion then
-				portrait:SetHeight(51)
-			else
-				portrait:SetHeight(57)
-			end
-			portrait:SetWidth(33)
-			portrait:SetAlpha(1)
-			if unit == "player" then
-				health:SetPoint("TOPLEFT", 34,0)
-				health:SetPoint("TOPRIGHT")
-				power:Point("TOPLEFT", health, "BOTTOMLEFT", 0, -1)
-				power:Point("TOPRIGHT", health, "BOTTOMRIGHT", 0, -1)
-				panel:Point("TOPLEFT", power, "BOTTOMLEFT", 0, -1)
-				panel:Point("TOPRIGHT", power, "BOTTOMRIGHT", 0, -1)
-				portrait:SetPoint("TOPLEFT", health, "TOPLEFT", -34,0)
-			elseif unit == "target" then
-				health:SetPoint("TOPRIGHT", -34,0)
-				health:SetPoint("TOPLEFT")
-				power:Point("TOPRIGHT", health, "BOTTOMRIGHT", 0, -1)
-				power:Point("TOPLEFT", health, "BOTTOMLEFT", 0, -1)
-				panel:Point("TOPRIGHT", power, "BOTTOMRIGHT", 0, -1)
-				panel:Point("TOPLEFT", power, "BOTTOMLEFT", 0, -1)
-				portrait:SetPoint("TOPRIGHT", health, "TOPRIGHT", 34,0)
-			end
-			panel:SetWidth(panel:GetWidth() - 34) -- panel need to be resized if charportrait is enabled
-			table.insert(self.__elements, T.HidePortrait)
-			self.Portrait = portrait
-		end
+    if (C["unitframes"].charportrait == true) then
+            local portrait = CreateFrame("PlayerModel", nil, health)
+            portrait.PostUpdate = function(self) self:SetAlpha(0) self:SetAlpha(0.15) end -- change the 0.15 to the alphavalue you want
+            portrait:SetAllPoints(health)
+            table.insert(self.__elements, T.HidePortrait)
+            self.Portrait = portrait
+        end
 		
 		if T.myclass == "PRIEST" and C["unitframes"].weakenedsoulbar then
 			local ws = CreateFrame("StatusBar", self:GetName().."_WeakenedSoul", power)
@@ -794,6 +770,16 @@ local function Shared(self, unit)
 		health:SetPoint("TOPRIGHT")
 		health:SetStatusBarTexture(normTex)
 		
+		-- portraits
+		if (C["unitframes"].charportrait == true) then
+            local portrait = CreateFrame("PlayerModel", nil, health)
+            portrait.PostUpdate = function(self) self:SetAlpha(0) self:SetAlpha(0.15) end -- change the 0.15 to the alphavalue you want
+            portrait:SetAllPoints(health)
+            table.insert(self.__elements, T.HidePortrait)
+            self.Portrait = portrait
+        end
+
+		
 		local healthBG = health:CreateTexture(nil, 'BORDER')
 		healthBG:SetAllPoints()
 		healthBG:SetTexture(.1, .1, .1)
@@ -981,6 +967,15 @@ local function Shared(self, unit)
 		health:SetPoint("TOPLEFT")
 		health:SetPoint("TOPRIGHT")
 		health:SetStatusBarTexture(normTex)
+		
+		-- portraits
+		if (C["unitframes"].charportrait == true) then
+            local portrait = CreateFrame("PlayerModel", nil, health)
+            portrait.PostUpdate = function(self) self:SetAlpha(0) self:SetAlpha(0.15) end -- change the 0.15 to the alphavalue you want
+            portrait:SetAllPoints(health)
+            table.insert(self.__elements, T.HidePortrait)
+            self.Portrait = portrait
+        end
 
 		health.frequentUpdates = true
 		health.colorDisconnected = true
@@ -1270,6 +1265,15 @@ local function Shared(self, unit)
 		health:SetPoint("TOPLEFT")
 		health:SetPoint("TOPRIGHT")
 		health:SetStatusBarTexture(normTex)
+		
+		-- portraits
+		if (C["unitframes"].charportrait == true) then
+            local portrait = CreateFrame("PlayerModel", nil, health)
+            portrait.PostUpdate = function(self) self:SetAlpha(0) self:SetAlpha(0.15) end -- change the 0.15 to the alphavalue you want
+            portrait:SetAllPoints(health)
+            table.insert(self.__elements, T.HidePortrait)
+            self.Portrait = portrait
+        end
 
 		health.frequentUpdates = true
 		health.colorDisconnected = true
