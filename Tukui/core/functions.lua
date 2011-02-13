@@ -100,7 +100,7 @@ T.DataTextTooltipAnchor = function(self)
 	local panel = self:GetParent()
 	local anchor = "ANCHOR_TOP"
 	local xoff = 0
-	local yoff = T.Scale(6)
+	local yoff = T.Scale(5)
 	
 	if panel == TukuiInfoLeft then
 		anchor = "ANCHOR_TOPLEFT"
@@ -324,7 +324,7 @@ end
 ------------------------------------------------------------------------
 
 local ADDON_NAME, ns = ...
-local oUF = oUFTukui or oUF
+local oUF = ns.oUF or oUF
 assert(oUF, "Tukui was unable to locate oUF install.")
 
 T.updateAllElements = function(frame)
