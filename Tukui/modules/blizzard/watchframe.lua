@@ -89,6 +89,7 @@ local function setup()
 		end 
 	end)
 	WatchFrameTitle:Kill()
+	WatchFrameCollapseExpandButton:Kill()
 end
 
 ------------------------------------------------------------------------
