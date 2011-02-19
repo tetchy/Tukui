@@ -46,6 +46,7 @@ C["media"] = {
 	-- BattleNet Textures
 	["gold"] = [[Interface\AddOns\Tukui\medias\textures\gold]],
 	["battlenet"] = [[Interface\AddOns\Tukui\medias\textures\battlenet]],
+	["battlenetl"] = [[Interface\AddOns\Tukui\medias\textures\battlenetl]],
 	["transparent"] = [[Interface\AddOns\Tukui\medias\textures\transparent]],
 	
 	-- sound

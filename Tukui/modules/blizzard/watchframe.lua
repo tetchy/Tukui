@@ -8,7 +8,7 @@ local wideFrame = GetCVar("watchFrameWidth")
 
 -- create our moving area
 local TukuiWatchFrameAnchor = CreateFrame("Button", "TukuiWatchFrameAnchor", UIParent)
-TukuiWatchFrameAnchor:SetFrameStrata("MEDIUM")
+TukuiWatchFrameAnchor:SetFrameStrata("HIGH")
 TukuiWatchFrameAnchor:SetFrameLevel(20)
 TukuiWatchFrameAnchor:SetHeight(20)
 TukuiWatchFrameAnchor:SetClampedToScreen(true)
