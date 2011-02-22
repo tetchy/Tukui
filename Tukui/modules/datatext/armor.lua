@@ -15,7 +15,7 @@ if C["datatext"].armor and C["datatext"].armor > 0 then
 
 	local function Update(self)
 		baseArmor , effectiveArmor, armor, posBuff, negBuff = UnitArmor("player");
-		Text:SetText((effectiveArmor).." "..L.datatext_armor)
+		Text:SetText((effectiveArmor)" "..L.datatext_armor)
 		--Setup Armor Tooltip
 		self:SetAllPoints(Text)
 	end

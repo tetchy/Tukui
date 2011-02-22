@@ -23,7 +23,7 @@ if C["datatext"].currency and C["datatext"].currency > 0 then
 				for _, word in ipairs(words) do
 					_text = _text .. string.sub(word,1,1)
 				end
-				_text = _text .. ": " .. count
+				_text = _text .. ": " .. hexa..count..hexb
 			end
 		end
 		

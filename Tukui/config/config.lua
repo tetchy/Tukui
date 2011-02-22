@@ -108,6 +108,10 @@ C["datatext"] = {
 	["mastery"] = 3,
 	["micromenu"] = 0,
 
+	-- Color Datatext
+	["classcolor"] = true,                         -- classcolored datatexts
+	["color"] = "|cff00AAFF",                       -- datatext color if classcolor = false (|cffFFFFFF = white)
+	
 	["battleground"] = true,                            -- enable 3 stats in battleground only that replace stat1,stat2,stat3.
 	["time24"] = false,                                  -- set time to 24h format.
 	["localtime"] = true,                              -- set time to local time instead of server time.

@@ -18,7 +18,7 @@ if C["datatext"].fps_ms and C["datatext"].fps_ms > 0 then
 	local function Update(self, t)
 		int = int - t
 		if int < 0 then
-			Text:SetText(floor(GetFramerate())..L.datatext_fps..select(3, GetNetStats())..L.datatext_ms)
+			Text:SetText(hexa..floor(GetFramerate())..hexb..L.datatext_fps..hexa..select(3, GetNetStats())..hexb..L.datatext_ms)
 			self:SetAllPoints(Text)
 			int = 1			
 		end	

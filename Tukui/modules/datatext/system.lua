@@ -19,14 +19,14 @@ T.PP(C["datatext"].system, Text)
 local bandwidthString = "%.2f Mbps"
 local percentageString = "%.2f%%"
 
-local kiloByteString = "%d kb"
-local megaByteString = "%.2f mb"
+local kiloByteString = "%d|r kb"
+local megaByteString = "%.2f|r mb"
 
 local function formatMem(memory)
 	local mult = 10^1
 	if memory > 999 then
 		local mem = ((memory/1024) * mult) / mult
-		return string.format(megaByteString, mem)
+		return hexa..string.format(megaByteString, mem)..hexb
 	else
 		local mem = (memory * mult) / mult
 		return string.format(kiloByteString, mem)

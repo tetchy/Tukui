@@ -58,6 +58,7 @@
 	<Script file="modules\maps\minimap.lua"/>
 	<Script file="modules\panels\panels.lua"/>
 	
+	<Script file="modules\datatext\colors.lua"/>
 	<Script file="modules\panels\battlenet.lua"/>
 	<Script file="modules\panels\RaidUtility.lua"/>
 	
