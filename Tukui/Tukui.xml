@@ -24,8 +24,8 @@
 	<Script file="modules\unitframes\plugins\oUF_Smooth\oUF_Smooth.lua"/>
 	<Script file="modules\unitframes\plugins\oUF_TotemBar\oUF_TotemBar.lua"/>
 	<Script file="modules\unitframes\plugins\oUF_Trinkets\oUF_Trinkets.lua"/>
-	<Script file="modules\unitframes\plugins\oUF_RaidDebuffs\oUF_RaidDebuffs.lua"/>	
-	<Script file="modules\unitframes\plugins\oUF_WeakenedSoul\oUF_WeakenedSoul.lua"/>	
+	<Script file="modules\unitframes\plugins\oUF_RaidDebuffs\oUF_RaidDebuffs.lua"/>
+	<Script file="modules\unitframes\plugins\oUF_WeakenedSoul\oUF_WeakenedSoul.lua"/>
 	<Script file="modules\unitframes\templates\colors.lua"/>
 	<Script file="core\uiscale.lua"/>
 	<Script file="core\deprecated.lua"/>
@@ -56,12 +56,11 @@
 	<Include file="modules\buffs\template.xml"/>
 	<Script file="modules\buffs\buffs.lua"/>
 	<Script file="modules\maps\minimap.lua"/>
+	<Script file="modules\datatext\colors.lua"/>
 	<Script file="modules\panels\panels.lua"/>
-	
 	<Script file="modules\datatext\colors.lua"/>
 	<Script file="modules\panels\battlenet.lua"/>
 	<Script file="modules\panels\RaidUtility.lua"/>
-	
 	<Script file="modules\datatext\armor.lua"/>
 	<Script file="modules\datatext\avoidance.lua"/>
 	<Script file="modules\datatext\bags.lua"/>

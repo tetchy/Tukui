@@ -220,13 +220,13 @@ local function SetupChatPosAndFont(self)
 		end
 		
 		--Check if chat exists in the bottomright corner
-		--if C.chat.background == true and point == "BOTTOMRIGHT" and chat:IsShown() then
-		--	TukuiChatBackgroundRight:Show()
-		--	TukuiTabsRightBackground:Show()
-		--	TukuiLineToABRightAlt:ClearAllPoints()
-		--	TukuiLineToABRightAlt:Point("LEFT", TukuiBar1, "RIGHT", 0, 16)
-		--	TukuiLineToABRightAlt:Point("BOTTOMRIGHT", TukuiChatBackgroundRight, "BOTTOMLEFT", 0, 16)			
-		--end
+		if C.chat.background == true and point == "BOTTOMRIGHT" and chat:IsShown() then
+			TukuiChatBackgroundRight:Show()
+			TukuiTabsRightBackground:Show()
+			TukuiLineToABRightAlt:ClearAllPoints()
+			TukuiLineToABRightAlt:Point("LEFT", TukuiBar1, "RIGHT", 0, 16)
+			TukuiLineToABRightAlt:Point("BOTTOMRIGHT", TukuiChatBackgroundRight, "BOTTOMLEFT", 0, 16)			
+		end
 	end
 			
 	-- reposition battle.net popup over chat #1
@@ -263,15 +263,12 @@ end
 hooksecurefunc("FCF_OpenTemporaryWindow", SetupTempChat)
 
 -- Skada Support.
-local f=CreateFrame"Frame"
-f:RegisterEvent("PLAYER_LOGIN")
-f:SetScript("OnEvent", function(self)
-	if IsAddOnLoaded("Skada") then
-    Skada:SetActive(false)
-	local skada=_G["SkadaBarWindow"..Skada.db.profile.windows[1].name]
-		if skada:IsShown() then ChatFrame4:Hide() else ChatFrame4:Show() end
-		skada:HookScript("OnShow", function() ChatFrame4:Hide() end)
-		skada:HookScript("OnHide", function() ChatFrame4:Show() end)
-		self:UnregisterEvent("PLAYER_LOGIN")
-	end
-end)
+-- local f=CreateFrame"Frame"
+-- f:RegisterEvent("PLAYER_LOGIN")
+-- f:SetScript("OnEvent", function(self)
+-- local skada=_G["SkadaBarWindow"..Skada.db.profile.windows[1].name]
+	-- if skada:IsShown() then ChatFrame4:Hide() else ChatFrame4:Show() end
+	-- skada:HookScript("OnShow", function() ChatFrame4:Hide() end)
+	-- skada:HookScript("OnHide", function() ChatFrame4:Show() end)
+	-- self:UnregisterEvent("PLAYER_LOGIN")
+-- end)

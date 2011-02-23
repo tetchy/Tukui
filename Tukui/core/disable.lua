@@ -37,3 +37,7 @@ end
 if (IsAddOnLoaded("Gladius")) then
 	C["arena"].unitframes = false
 end
+
+if IsAddOnLoaded("Skada") then
+    Skada:SetActive(false)
+end
