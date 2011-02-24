@@ -24,7 +24,7 @@ local function tooltip(self)
 	GameTooltip:SetOwner(self, 'ANCHOR_BOTTOM', 0, -5)
 	GameTooltip:AddLine(string.format('%s (%s)', name, _G['FACTION_STANDING_LABEL'..id]))
 	GameTooltip:AddLine(string.format('%d / %d (%d%%)', value - min, max - min, (value - min) / (max - min) * 100))
-	GameTooltip:Show()
+	--GameTooltip:Show()
 end
 
 local function update(self, event, unit)

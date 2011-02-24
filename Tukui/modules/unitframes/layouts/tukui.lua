@@ -285,19 +285,44 @@ local function Shared(self, unit)
 				Reputation:SetStatusBarTexture(normTex)
 				Reputation:SetBackdrop(backdrop)
 				Reputation:SetBackdropColor(unpack(C["media"].backdropcolor))
-				Reputation:Width(panel:GetWidth() - 4)
-				Reputation:Height(panel:GetHeight() - 4)
-				Reputation:Point("TOPLEFT", panel, 2, -2)
-				Reputation:Point("BOTTOMRIGHT", panel, -2, 2)
+				Reputation:Width(TukuiInfoMiddle:GetWidth() - 4)
+				Reputation:Height(TukuiInfoMiddle:GetHeight() - 4)
+				Reputation:Point("TOPLEFT", TukuiInfoMiddle, 2, -2)
+				Reputation:Point("BOTTOMRIGHT", TukuiInfoMiddle, -2, 2)
 				Reputation:SetFrameLevel(10)
-				Reputation:SetAlpha(0)
-
-				Reputation:HookScript("OnEnter", function(self) self:SetAlpha(1) end)
-				Reputation:HookScript("OnLeave", function(self) self:SetAlpha(0) end)
+				Reputation:SetAlpha(1)
+				
+				Reputation.Text = T.SetFontString(Reputation, C.media.font, 12)
+				Reputation.Text:SetPoint("CENTER")
+				Reputation.Text:SetAlpha(0)
+				Reputation:HookScript("OnEnter", function(self) Reputation.Text:SetAlpha(1) end)
+				Reputation:HookScript("OnLeave", function(self) Reputation.Text:SetAlpha(0) end)
 
 				Reputation.PostUpdate = T.UpdateReputationColor
 				Reputation.Tooltip = true
 				self.Reputation = Reputation
+			end
+			
+			if T.Role == "Tank" then
+			local Vengeance = CreateFrame("StatusBar", "TukuiVengeance", TukuiInfoMiddle)
+				Vengeance:SetFrameStrata("TOOLTIP")
+				Vengeance:SetFrameLevel(TukuiInfoMiddle:GetFrameLevel() + 2)
+				Vengeance:SetPoint("TOPLEFT", TukuiInfoMiddle, TukuiDB.Scale(2), TukuiDB.Scale(-2))
+				Vengeance:SetPoint("BOTTOMRIGHT", TukuiInfoMiddle, TukuiDB.Scale(-2), TukuiDB.Scale(2))
+				Vengeance:SetStatusBarTexture(normTex)
+				Vengeance:GetStatusBarTexture():SetHorizTile(false)
+				Vengeance:SetStatusBarColor(unpack(C["media"].altclasscolor))
+				Vengeance:SetBackdrop({bgFile = C.media.blank})
+				Vengeance:SetBackdropColor(0, 0, 0, 0)
+				
+				Vengeance.Text = T.SetFontString(Vengeance, C.media.font, 12)
+				Vengeance.Text:SetPoint("CENTER")
+				
+				Vengeance.bg = Vengeance:CreateTexture(nil, 'BORDER')
+				Vengeance.bg:SetAllPoints(Vengeance)
+				Vengeance.bg:SetTexture(unpack(C["media"].backdropcolor))
+				
+				self.Vengeance = Vengeance
 			end
 			
 			-- show druid mana when shapeshifted in bear, cat or whatever

@@ -1,7 +1,7 @@
 local T, C, L = unpack(select(2, ...)) -- Import: T - functions, constants, variables; C - config; L - locales
 
 local TukuiBar1 = CreateFrame("Frame", "TukuiBar1", UIParent, "SecureHandlerStateTemplate")
-TukuiBar1:CreatePanel("Default", 1, 1, "BOTTOM", UIParent, "BOTTOM", 0, 14)
+TukuiBar1:CreatePanel("Default", 1, 1, "BOTTOM", UIParent, "BOTTOM", 0, 48)
 TukuiBar1:SetWidth((T.buttonsize * 12) + (T.buttonspacing * 13))
 TukuiBar1:SetHeight((T.buttonsize * 2) + (T.buttonspacing * 3))
 TukuiBar1:SetFrameStrata("BACKGROUND")
@@ -33,7 +33,7 @@ else
 end
 
 local TukuiBar4 = CreateFrame("Frame", "TukuiBar4", UIParent)
-TukuiBar4:CreatePanel("Default", 1, 1, "BOTTOM", UIParent, "BOTTOM", 0, 14)
+TukuiBar4:CreatePanel("Default", 1, 1, "BOTTOM", UIParent, "BOTTOM", 0, 48)
 TukuiBar4:SetWidth((T.buttonsize * 12) + (T.buttonspacing * 13))
 TukuiBar4:SetHeight((T.buttonsize * 2) + (T.buttonspacing * 3))
 TukuiBar4:SetFrameStrata("BACKGROUND")
@@ -154,11 +154,22 @@ ileft:CreatePanel("Default", T.InfoLeftRightWidth, 23, "LEFT", ltoabl, "LEFT", 1
 ileft:SetFrameLevel(2)
 ileft:SetFrameStrata("BACKGROUND")
 
+-- INFO MIDDLE (FOR STATS)
+local imiddle = CreateFrame("Frame", "TukuiInfoMiddle", TukuiBar1)
+imiddle:CreatePanel("Default", TukuiBar1:GetWidth(), 17, "TOP", TukuiBar1, "BOTTOM", 0, -7)
+imiddle:SetFrameLevel(2)
+imiddle:SetFrameStrata("BACKGROUND")
+
 -- INFO RIGHT (FOR STATS)
 local iright = CreateFrame("Frame", "TukuiInfoRight", TukuiBar1)
 iright:CreatePanel("Default", T.InfoLeftRightWidth, 23, "RIGHT", ltoabr, "RIGHT", -14 + movechat, 0)
 iright:SetFrameLevel(2)
 iright:SetFrameStrata("BACKGROUND")
+
+-- BOTTOM VIEWPORT
+local bbar = CreateFrame("Frame", "TukuiBottomBar", UIParent)
+bbar:CreatePanel(bbar, (GetScreenWidth() * 1) * 2, 20, "BOTTOM", UIParent, "BOTTOM", 0, TukuiDB.Scale(-2))
+bbar:SetFrameLevel(0)
 
 if C.chat.background then
 	-- Alpha horizontal lines because all panels is dependent on this frame.
