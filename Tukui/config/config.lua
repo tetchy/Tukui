@@ -92,24 +92,24 @@ C["datatext"] = {
 	["system"] = 5,                                     -- show total memory and others systems infos on panels
 	["bags"] = 6,                                       -- show space used in bags on panels
 	["gold"] = 12,                                       -- show your current gold on panels
-	["wowtime"] = 8,                                    -- show time on panels
+	["wowtime"] = 7,                                    -- show time on panels
 	["guild"] = 10,                                      -- show number on guildmate connected on panels
 	["dur"] = 2,                                        -- show your equipment durability on panels.
 	["friends"] = 9,                                    -- show number of friends connected.
 	["dps_text"] = 0,                                   -- show a dps meter on panels
 	["hps_text"] = 0,                                   -- show a heal meter on panels
-	["power"] = 7,                                      -- show your attackpower/spellpower/healpower/rangedattackpower whatever stat is higher gets displayed
+	["power"] = 14,                                      -- show your attackpower/spellpower/healpower/rangedattackpower whatever stat is higher gets displayed
 	["haste"] = 0,                                      -- show your haste rating on panels.
 	["crit"] = 0,                                       -- show your crit rating on panels.
 	["avd"] = 1,                                        -- show your current avoidance against the level of the mob your targeting
 	["armor"] = 0,                                      -- show your armor value against the level mob you are currently targeting
 	["currency"] = 11,                                   -- show your tracked currency on panels
-	["hit"] = 0,
+	["hit"] = 13,
 	["mastery"] = 3,
 	["micromenu"] = 0,
 
 	-- Color Datatext
-	["classcolor"] = true,                         -- classcolored datatexts
+	["classcolor"] = false,                         -- classcolored datatexts
 	["color"] = "|cff00AAFF",                       -- datatext color if classcolor = false (|cffFFFFFF = white)
 	
 	["battleground"] = true,                            -- enable 3 stats in battleground only that replace stat1,stat2,stat3.
@@ -163,4 +163,13 @@ C["invite"] = {
 C["buffreminder"] = {
 	["enable"] = true,                                  -- this is now the new innerfire warning script for all armor/aspect class.
 	["sound"] = true,                                   -- enable warning sound notification for reminder.
+}
+
+C["skin"] = {                        --Skin addons by Darth Android
+    ["recount"] = false,
+    ["skada"] = true,
+    ["omen"] = false,
+    ["kle"] = false,
+    ["hookkleright"] = false,        -- force KLE's top bar anchor to be hooked onto the right chat window
+    ["embedright"] = "NONE",        -- Addon to embed to the right frame ("Omen", "Recount", "Skada")
 }

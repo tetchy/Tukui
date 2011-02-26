@@ -154,11 +154,24 @@ ileft:CreatePanel("Default", T.InfoLeftRightWidth, 23, "LEFT", ltoabl, "LEFT", 1
 ileft:SetFrameLevel(2)
 ileft:SetFrameStrata("BACKGROUND")
 
+-- INFO MIDDLELEFTR (FOR STATS)
+local imiddleleftr = CreateFrame("Frame", "TukuiInfoMiddleLeftR", UIParent)
+imiddleleftr:CreatePanel("Default", (TukuiBar1:GetWidth() * 0.23), 23, "TOPLEFT", TukuiBar1, "BOTTOMLEFT", 0, -4)
+imiddleleftr:SetFrameLevel(2)
+imiddleleftr:SetFrameStrata("BACKGROUND")
+
 -- INFO MIDDLE (FOR STATS)
 local imiddle = CreateFrame("Frame", "TukuiInfoMiddle", TukuiBar1)
-imiddle:CreatePanel("Default", TukuiBar1:GetWidth(), 17, "TOP", TukuiBar1, "BOTTOM", 0, -7)
+imiddle:CreatePanel("Default", (TukuiBar1:GetWidth() * 0.5), 17, "TOP", TukuiBar1, "BOTTOM", 0, -7)
 imiddle:SetFrameLevel(2)
 imiddle:SetFrameStrata("BACKGROUND")
+
+-- INFO MIDDLERIGHTL (FOR STATS)
+local imiddlerightl = CreateFrame("Frame", "TukuiInfoMiddleRightL", UIParent)
+imiddlerightl:CreatePanel("Default", (TukuiBar1:GetWidth() * 0.23), 23, "TOPRIGHT", TukuiBar1, "BOTTOMRIGHT", 0, -4)
+imiddlerightl:SetFrameLevel(2)
+imiddlerightl:SetFrameStrata("BACKGROUND")
+
 
 -- INFO RIGHT (FOR STATS)
 local iright = CreateFrame("Frame", "TukuiInfoRight", TukuiBar1)
@@ -203,23 +216,24 @@ if C.chat.background then
 	local ltoabl2 = CreateFrame("Frame", "TukuiLineToABLeftAlt", TukuiBar1)
 	ltoabl2:CreatePanel("Default", 5, 2, "BOTTOMRIGHT", UIParent, "BOTTOMRIGHT", 0, 0)
 	ltoabl2:ClearAllPoints()
-	ltoabl2:Point("RIGHT", TukuiBar1, "LEFT", 0, 16)
+	ltoabl2:Point("RIGHT", TukuiInfoMiddle, "LEFT", 0, 16)
 	ltoabl2:Point("BOTTOMLEFT", chatleftbg, "BOTTOMRIGHT", 0, 16)
 
 	-- HORIZONTAL LINE RIGHT
 	local ltoabr2 = CreateFrame("Frame", "TukuiLineToABRightAlt", TukuiBar1)
 	ltoabr2:CreatePanel("Default", 5, 2, "BOTTOMRIGHT", UIParent, "BOTTOMRIGHT", 0, 0)
 	ltoabr2:ClearAllPoints()
-	ltoabr2:Point("LEFT", TukuiBar1, "RIGHT", 0, 16)
+	ltoabr2:Point("LEFT", TukuiInfoMiddle, "RIGHT", 0, 16)
 	ltoabr2:Point("BOTTOMRIGHT", chatrightbg, "BOTTOMLEFT", 15, 16)
 end
 
 if TukuiMinimap then
 	local minimapstatsleft = CreateFrame("Frame", "TukuiMinimapStatsLeft", TukuiMinimap)
-	minimapstatsleft:CreatePanel("Default", ((TukuiMinimap:GetWidth() + 4) / 2) -3, 19, "TOPLEFT", TukuiMinimap, "BOTTOMLEFT", 0, -2)
+	--minimapstatsleft:CreatePanel("Default", ((TukuiMinimap:GetWidth() + 4) / 2) -3, 19, "TOPLEFT", TukuiMinimap, "BOTTOMLEFT", 0, -2)
+	minimapstatsleft:CreatePanel("Default", TukuiMinimap:GetWidth(), 19, "TOPLEFT", TukuiMinimap, "BOTTOMLEFT", 0, -2)
 
-	local minimapstatsright = CreateFrame("Frame", "TukuiMinimapStatsRight", TukuiMinimap)
-	minimapstatsright:CreatePanel("Default", ((TukuiMinimap:GetWidth() + 4) / 2) -3, 19, "TOPRIGHT", TukuiMinimap, "BOTTOMRIGHT", 0, -2)
+	--local minimapstatsright = CreateFrame("Frame", "TukuiMinimapStatsRight", TukuiMinimap)
+	--minimapstatsright:CreatePanel("Default", ((TukuiMinimap:GetWidth() + 4) / 2) -3, 19, "TOPRIGHT", TukuiMinimap, "BOTTOMRIGHT", 0, -2)
 end
 
 --BATTLEGROUND STATS FRAME

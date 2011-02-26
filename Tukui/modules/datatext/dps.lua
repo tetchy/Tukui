@@ -71,7 +71,7 @@ if C["datatext"].dps_text and C["datatext"].dps_text > 0 then
      
 	function getDPS()
 		if (dmg_total == 0) then
-			return ("0.0 " .. L.datatext_dps)
+			return (hexa.."0.0 "..hexb .. L.datatext_dps)
 		else
 			return string.format("%.1f " .. L.datatext_dps, (dmg_total or 0) / (cmbt_time or 1))
 		end

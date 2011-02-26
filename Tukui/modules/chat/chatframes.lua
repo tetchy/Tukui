@@ -224,7 +224,7 @@ local function SetupChatPosAndFont(self)
 			TukuiChatBackgroundRight:Show()
 			TukuiTabsRightBackground:Show()
 			TukuiLineToABRightAlt:ClearAllPoints()
-			TukuiLineToABRightAlt:Point("LEFT", TukuiBar1, "RIGHT", 0, 16)
+			TukuiLineToABRightAlt:Point("LEFT", TukuiInfoMiddle, "RIGHT", 0, 16)
 			TukuiLineToABRightAlt:Point("BOTTOMRIGHT", TukuiChatBackgroundRight, "BOTTOMLEFT", 0, 16)			
 		end
 	end

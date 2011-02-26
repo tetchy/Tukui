@@ -280,28 +280,26 @@ local function Shared(self, unit)
 			end
 			
 			-- reputation bar for max level character
-			if T.level == MAX_PLAYER_LEVEL then
-				local Reputation = CreateFrame("StatusBar", self:GetName().."_Reputation", self)
-				Reputation:SetStatusBarTexture(normTex)
-				Reputation:SetBackdrop(backdrop)
-				Reputation:SetBackdropColor(unpack(C["media"].backdropcolor))
-				Reputation:Width(TukuiInfoMiddle:GetWidth() - 4)
-				Reputation:Height(TukuiInfoMiddle:GetHeight() - 4)
-				Reputation:Point("TOPLEFT", TukuiInfoMiddle, 2, -2)
-				Reputation:Point("BOTTOMRIGHT", TukuiInfoMiddle, -2, 2)
-				Reputation:SetFrameLevel(10)
-				Reputation:SetAlpha(1)
+			local Reputation = CreateFrame("StatusBar", self:GetName().."_Reputation", self)
+			Reputation:SetStatusBarTexture(normTex)
+			Reputation:SetBackdrop(backdrop)
+			Reputation:SetBackdropColor(unpack(C["media"].backdropcolor))
+			Reputation:Width(TukuiInfoMiddle:GetWidth() - 4)
+			Reputation:Height(TukuiInfoMiddle:GetHeight() - 4)
+			Reputation:Point("TOPLEFT", TukuiInfoMiddle, 2, -2)
+			Reputation:Point("BOTTOMRIGHT", TukuiInfoMiddle, -2, 2)
+			Reputation:SetFrameLevel(10)
+			Reputation:SetAlpha(1)
 				
-				Reputation.Text = T.SetFontString(Reputation, C.media.font, 12)
-				Reputation.Text:SetPoint("CENTER")
-				Reputation.Text:SetAlpha(0)
-				Reputation:HookScript("OnEnter", function(self) Reputation.Text:SetAlpha(1) end)
-				Reputation:HookScript("OnLeave", function(self) Reputation.Text:SetAlpha(0) end)
+			Reputation.Text = T.SetFontString(Reputation, C.media.font, 12)
+			Reputation.Text:SetPoint("CENTER")
+			Reputation.Text:SetAlpha(0)
+			Reputation:HookScript("OnEnter", function(self) Reputation.Text:SetAlpha(1) end)
+			Reputation:HookScript("OnLeave", function(self) Reputation.Text:SetAlpha(0) end)
 
-				Reputation.PostUpdate = T.UpdateReputationColor
-				Reputation.Tooltip = true
-				self.Reputation = Reputation
-			end
+			Reputation.PostUpdate = T.UpdateReputationColor
+			Reputation.Tooltip = true
+			self.Reputation = Reputation
 			
 			if T.Role == "Tank" then
 			local Vengeance = CreateFrame("StatusBar", "TukuiVengeance", TukuiInfoMiddle)
@@ -311,7 +309,7 @@ local function Shared(self, unit)
 				Vengeance:SetPoint("BOTTOMRIGHT", TukuiInfoMiddle, TukuiDB.Scale(-2), TukuiDB.Scale(2))
 				Vengeance:SetStatusBarTexture(normTex)
 				Vengeance:GetStatusBarTexture():SetHorizTile(false)
-				Vengeance:SetStatusBarColor(unpack(C["media"].altclasscolor))
+				Vengeance:SetStatusBarColor(.6, .2, .2 )
 				Vengeance:SetBackdrop({bgFile = C.media.blank})
 				Vengeance:SetBackdropColor(0, 0, 0, 0)
 				

@@ -15,11 +15,13 @@ T.PP = function(p, obj)
 	local left = TukuiInfoLeft
 	local right = TukuiInfoRight
 	local mapleft = TukuiMinimapStatsLeft
-	local mapright = TukuiMinimapStatsRight
+	--local mapright = TukuiMinimapStatsRight
 	local battletop = TukuiBattleNetPTopStat
 	local battlebottom = TukuiBattleNetPBottomStat
 	local goldtop = TukuiGoldPTopStat
 	local goldbottom = TukuiGoldPBottomStat
+	local middleleftr = TukuiInfoMiddleLeftR
+	local middlerightl = TukuiInfoMiddleRightL
 	
 	if p == 1 then
 		obj:SetParent(left)
@@ -79,6 +81,16 @@ T.PP = function(p, obj)
 		obj:SetPoint("LEFT", goldbottom, 10, 0)
 		obj:SetPoint("TOP", goldbottom)
 		obj:SetPoint("BOTTOM", goldbottom)
+	elseif p == 13 then
+		obj:SetParent(middleleftr)
+		obj:SetHeight(middleleftr:GetHeight())
+		obj:SetPoint("TOP", middleleftr)
+		obj:SetPoint("BOTTOM", middleleftr)
+	elseif p == 14 then
+		obj:SetParent(middlerightl)
+		obj:SetHeight(middlerightl:GetHeight())
+		obj:SetPoint("TOP", middlerightl)
+		obj:SetPoint("BOTTOM", middlerightl)
 	end
 	
 	if TukuiMinimap then
@@ -87,11 +99,11 @@ T.PP = function(p, obj)
 			obj:SetHeight(mapleft:GetHeight())
 			obj:SetPoint('TOP', mapleft)
 			obj:SetPoint('BOTTOM', mapleft)
-		elseif p == 8 then
-			obj:SetParent(mapright)
-			obj:SetHeight(mapright:GetHeight())
-			obj:SetPoint('TOP', mapright)
-			obj:SetPoint('BOTTOM', mapright)
+		-- elseif p == 8 then
+			-- obj:SetParent(mapright)
+			-- obj:SetHeight(mapright:GetHeight())
+			-- obj:SetPoint('TOP', mapright)
+			-- obj:SetPoint('BOTTOM', mapright)
 		end
 	end
 end
@@ -106,16 +118,17 @@ T.DataTextTooltipAnchor = function(self)
 		anchor = "ANCHOR_TOPLEFT"
 	elseif panel == TukuiInfoRight then
 		anchor = "ANCHOR_TOPRIGHT"
-	elseif panel == TukuiMinimapStatsLeft or panel == TukuiMinimapStatsRight then
+	elseif panel == TukuiMinimapStatsLeft  then
+	--elseif panel == TukuiMinimapStatsLeft or panel == TukuiMinimapStatsRight then
 		local position = TukuiMinimap:GetPoint()
 		if position:match("LEFT") then
 			anchor = "ANCHOR_BOTTOMRIGHT"
 			yoff = T.Scale(-6)
 			xoff = 0 - TukuiMinimapStatsRight:GetWidth()
-		elseif position:match("RIGHT") then
-			anchor = "ANCHOR_BOTTOMLEFT"
-			yoff = T.Scale(-6)
-			xoff = TukuiMinimapStatsRight:GetWidth()
+		-- elseif position:match("RIGHT") then
+			-- anchor = "ANCHOR_BOTTOMLEFT"
+			-- yoff = T.Scale(-6)
+			-- xoff = TukuiMinimapStatsRight:GetWidth()
 		else
 			anchor = "ANCHOR_BOTTOM"
 			yoff = T.Scale(-6)
@@ -277,7 +290,7 @@ local function CheckRole(self, event, unit)
 	local resilience
 	local resilperc = GetCombatRatingBonus(COMBAT_RATING_RESILIENCE_PLAYER_DAMAGE_TAKEN)
 	if resilperc > GetDodgeChance() and resilperc > GetParryChance() then
-		resilience = true
+		resilience = false
 	else
 		resilience = false
 	end
