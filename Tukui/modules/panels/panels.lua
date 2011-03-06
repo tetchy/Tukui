@@ -184,6 +184,11 @@ local bbar = CreateFrame("Frame", "TukuiBottomBar", UIParent)
 bbar:CreatePanel(bbar, (GetScreenWidth() * 1) * 2, 20, "BOTTOM", UIParent, "BOTTOM", 0, TukuiDB.Scale(-2))
 bbar:SetFrameLevel(0)
 
+-- TOP VIEWPORT
+local tbar = CreateFrame("Frame", "TukuiTopBar", UIParent)
+tbar:CreatePanel(tbar, (GetScreenWidth() * 1) * 2, 20, "TOP", UIParent, "TOP", 0, TukuiDB.Scale(2))
+tbar:SetFrameLevel(0)
+
 if C.chat.background then
 	-- Alpha horizontal lines because all panels is dependent on this frame.
 	ltoabl:SetAlpha(0)

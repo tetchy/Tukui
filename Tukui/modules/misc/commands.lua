@@ -1,5 +1,27 @@
 local T, C, L = unpack(select(2, ...)) -- Import: T - functions, constants, variables; C - config; L - locales
 
+--
+SLASH_TEST1 = "/test"
+SlashCmdList["TEST"] = function()
+    for _, frames in pairs({"TukuiPlayer", "TukuiTarget", "TukuiTargetTarget", "TukuiPet", "TukuiFocus"}) do
+        _G[frames].Hide = function() end
+        _G[frames]:Show()
+        _G[frames].unit = "player"
+    end
+    for _, frames in pairs({"TukuiArena"--[[, "TukuiArenaUnitButton"]]}) do
+        for i = 1, 5 do
+            _G[frames..i].Hide = function() end
+            _G[frames..i]:Show()
+            _G[frames..i].unit = "player"
+        end
+    end
+	for i = 1, 25 do
+		_G["TukuiRaidUnitButton"..i].Hide = function() end
+		_G["TukuiUnitButton"..i]:Show()
+	end
+end
+
+
 -- enable or disable an addon via command
 SlashCmdList.DISABLE_ADDON = function(addon) local _, _, _, _, _, reason, _ = GetAddOnInfo(addon) if reason ~= "MISSING" then DisableAddOn(addon) ReloadUI() else print("|cffff0000Error, Addon not found.|r") end end
 SLASH_DISABLE_ADDON1 = "/disable"

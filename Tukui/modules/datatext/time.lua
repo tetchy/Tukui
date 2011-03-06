@@ -26,6 +26,37 @@ T.PP(C["datatext"].wowtime, Text)
 
 local APM = { TIMEMANAGER_PM, TIMEMANAGER_AM }
 
+--------------------------------------------------------------------
+-- Blink by Hydra
+--------------------------------------------------------------------	
+	SetUpAnimGroup = function(self)
+		self.anim = self:CreateAnimationGroup("Flash")
+		self.anim.fadein = self.anim:CreateAnimation("ALPHA", "FadeIn")
+		self.anim.fadein:SetChange(1)
+		self.anim.fadein:SetOrder(2)
+
+		self.anim.fadeout = self.anim:CreateAnimation("ALPHA", "FadeOut")
+		self.anim.fadeout:SetChange(-1)
+		self.anim.fadeout:SetOrder(1)
+	end
+
+	Flash = function(self, duration)
+		if not self.anim then
+			SetUpAnimGroup(self)
+		end
+
+		self.anim.fadein:SetDuration(duration)
+		self.anim.fadeout:SetDuration(duration)
+		self.anim:Play()
+	end
+
+	StopFlash = function(self)
+		if self.anim then
+			self.anim:Finish()
+		end
+	end
+--------------------------------------------------------------------
+
 local function CalculateTimeValues(tt)
 	if tt == nil then tt = false end
 	local Hr, Min, AmPm
@@ -109,8 +140,10 @@ local function Update(self, t)
 	
 	if CalendarGetNumPendingInvites() > 0 then
 		Text:SetTextColor(1, 0, 0)
+		Flash(Text, 0.5)
 	else
 		Text:SetTextColor(1, 1, 1)
+		StopFlash(Text)
 	end
 	
 	-- no update quick exit
