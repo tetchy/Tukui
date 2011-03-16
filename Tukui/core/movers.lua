@@ -3,6 +3,7 @@ local T, C, L = unpack(select(2, ...)) -- Import: T - functions, constants, vari
 -- all the frame we want to move
 -- all our frames that we want being movable.
 T.MoverFrames = {
+	TukuiWorldFrameAnchor,
 	TukuiMinimap,
 	TukuiTooltipAnchor,
 	TukuiPlayerBuffs,
@@ -92,7 +93,15 @@ local function exec(self, enable)
 			TukuiWatchFrameAnchor:SetBackdropColor(0,0,0,0)		
 		end
 	end
-	
+	if self == TukuiWorldFrameAnchor then
+        if enable then
+            TukuiWorldFrameAnchor:SetBackdropBorderColor(1,0,0,1)
+            TukuiWorldFrameAnchor:SetBackdropColor(unpack(C.media.backdropcolor))
+        else
+            TukuiWorldFrameAnchor:SetBackdropBorderColor(0,0,0,0)
+            TukuiWorldFrameAnchor:SetBackdropColor(0,0,0,0)
+        end
+    end
 	if self == TukuiShiftBar then
 		if enable then
 			TukuiShapeShiftHolder:SetAlpha(1)

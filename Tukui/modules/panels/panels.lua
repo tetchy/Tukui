@@ -207,12 +207,24 @@ if C.chat.background then
 	tabsbgleft:CreatePanel("Default", T.InfoLeftRightWidth, 23, "TOP", chatleftbg, "TOP", 0, -6)
 	tabsbgleft:SetFrameLevel(2)
 	tabsbgleft:SetFrameStrata("BACKGROUND")
+	tabsbgleft:EnableMouse(true)
+	tabsbgleft:SetScript("OnMouseDown", function(self, btn)
+		if btn == "LeftButton" then
+			ToggleFrame(ChatMenu)
+		end
+	end)
 		
 	-- RIGHT TAB PANEL
 	local tabsbgright = CreateFrame("Frame", "TukuiTabsRightBackground", TukuiBar1)
-	tabsbgright:CreatePanel("Default", T.InfoLeftRightWidth, 23, "TOP", chatrightbg, "TOP", 0, -6)
+	tabsbgright:CreatePanel("Default", T.InfoLeftRightWidth -25, 23, "TOPLEFT", chatrightbg, "TOPLEFT", 6, -6)
 	tabsbgright:SetFrameLevel(2)
 	tabsbgright:SetFrameStrata("BACKGROUND")
+	tabsbgright:EnableMouse(true)
+	tabsbgright:SetScript("OnMouseDown", function(self, btn)
+		if btn == "LeftButton" then
+		ShowHelm(not ShowingHelm())
+		end
+	end)
 	
 	-- [[ Create new horizontal line for chat background ]] --
 	-- HORIZONTAL LINE LEFT
@@ -259,3 +271,36 @@ f:SetScript("OnEvent", function(self)
 	skada:HookScript("OnHide", function() ChatFrame4:Show() end)
 	self:UnregisterEvent("PLAYER_LOGIN")
 end)
+
+-- Skada Toggle Button
+if IsAddOnLoaded("Skada") then
+	local toggleskada = CreateFrame("Frame", "TukuiSkadaToggle", UIParent)
+	local toggletext = toggleskada:CreateFontString(nil, "OVERLAY", nil)
+	toggletext:SetFont(C.media.font,C["datatext"].fontsize, "OUTLINE")
+	toggletext:SetText(hexa.."S"..hexb)
+	toggletext:SetPoint("CENTER", 2, 0.5)
+	toggleskada:CreatePanel(toggleskada, 23, 23, "TOPLEFT", TukuiTabsRightBackground, "TOPRIGHT", 2, 0)
+	toggleskada:SetFrameLevel(TukuiTabsRightBackground:GetFrameLevel())
+	toggleskada:EnableMouse(true)
+	toggleskada:SetScript("OnEnter", function(self) toggleskada:SetBackdropBorderColor(unpack(C["media"].altclasscolor)) 
+	GameTooltip:SetOwner(self, "ANCHOR_TOP", 0, 6)
+	GameTooltip:ClearAllPoints()
+	GameTooltip:ClearLines()
+	GameTooltip:AddLine("L: Toggle Skada")
+	GameTooltip:AddLine("R: Toggle RBR")
+	GameTooltip:Show()
+	end)
+	toggleskada:SetScript("OnLeave", function(self) toggleskada:SetBackdropBorderColor(unpack(C["media"].bordercolor)) 
+	GameTooltip:Hide() end)
+	toggleskada:SetScript("OnMouseDown", function(self, btn)
+		if btn == "LeftButton" then
+			Skada:ToggleWindow() end
+		if btn == "RightButton" then
+			if RaidBuffReminder:IsShown() then
+				RaidBuffReminder:Hide()
+			else
+				RaidBuffReminder:Show()
+			end 
+		end
+	end)
+end

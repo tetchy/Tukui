@@ -82,7 +82,7 @@ local function valueChanged(self)
 				if bar.OverrideText then
 					bar.Text:OverrideText(value)
 				else
-					bar.Text:SetText(value)
+					bar.Text:SetText(value.." / "..bar.max)
 				end
 			end
 		else

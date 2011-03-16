@@ -1,3 +1,9 @@
+local T, C, L = unpack(select(2, ...)) -- Import: T - functions, constants, variables; C - config; L - locales
+if not(C["unitframes"].layout == "Tukui") then return end
+if not C["unitframes"].enable == true then return end
+
+print("Tukui layout enabled")
+
 local ADDON_NAME, ns = ...
 local oUF = ns.oUF or oUF
 assert(oUF, "Tukui was unable to locate oUF install.")
@@ -5,8 +11,7 @@ assert(oUF, "Tukui was unable to locate oUF install.")
 ns._Objects = {}
 ns._Headers = {}
 
-local T, C, L = unpack(select(2, ...)) -- Import: T - functions, constants, variables; C - config; L - locales
-if not C["unitframes"].enable == true then return end
+
 
 ------------------------------------------------------------------------
 --	local variables
@@ -288,7 +293,7 @@ local function Shared(self, unit)
 			Reputation:Height(TukuiInfoMiddle:GetHeight() - 4)
 			Reputation:Point("TOPLEFT", TukuiInfoMiddle, 2, -2)
 			Reputation:Point("BOTTOMRIGHT", TukuiInfoMiddle, -2, 2)
-			Reputation:SetFrameLevel(TukuiInfoMiddle:GetFrameLevel())
+			Reputation:SetFrameLevel(TukuiInfoMiddle:GetFrameLevel() + 1)
 			Reputation:SetAlpha(1)
 				
 			Reputation.Text = T.SetFontString(Reputation, C.media.font, 12)
@@ -301,27 +306,28 @@ local function Shared(self, unit)
 			Reputation.Tooltip = true
 			self.Reputation = Reputation
 			
-			if T.Role == "Tank" then
-			local Vengeance = CreateFrame("StatusBar", "TukuiVengeance", TukuiInfoMiddle)
-				Vengeance:SetFrameStrata("TOOLTIP")
-				Vengeance:SetFrameLevel(Reputation:GetFrameLevel() + 1)
-				Vengeance:SetPoint("TOPLEFT", TukuiInfoMiddle, TukuiDB.Scale(2), TukuiDB.Scale(-2))
-				Vengeance:SetPoint("BOTTOMRIGHT", TukuiInfoMiddle, TukuiDB.Scale(-2), TukuiDB.Scale(2))
-				Vengeance:SetStatusBarTexture(normTex)
-				Vengeance:GetStatusBarTexture():SetHorizTile(false)
-				Vengeance:SetStatusBarColor(.6, .2, .2 )
-				Vengeance:SetBackdrop({bgFile = C.media.blank})
-				Vengeance:SetBackdropColor(0, 0, 0, 0)
-				
-				Vengeance.Text = T.SetFontString(Vengeance, C.media.font, 12)
-				Vengeance.Text:SetPoint("CENTER")
-				
-				Vengeance.bg = Vengeance:CreateTexture(nil, 'BORDER')
-				Vengeance.bg:SetAllPoints(Vengeance)
-				Vengeance.bg:SetTexture(unpack(C["media"].backdropcolor))
-				
-				self.Vengeance = Vengeance
-			end
+			-- Vengeance bar for tanks
+			local Vengeance = CreateFrame("StatusBar", self:GetName().."_Vengeance", self)
+			--local Vengeance = CreateFrame("StatusBar", "TukuiVengeance", TukuiInfoMiddle)
+			--Vengeance:SetFrameStrata("TOOLTIP")
+			Vengeance:SetFrameLevel(10)
+			Vengeance:SetPoint("TOPLEFT", TukuiInfoMiddle, TukuiDB.Scale(2), TukuiDB.Scale(-2))
+			Vengeance:SetPoint("BOTTOMRIGHT", TukuiInfoMiddle, TukuiDB.Scale(-2), TukuiDB.Scale(2))
+			Vengeance:SetStatusBarTexture(normTex)
+			Vengeance:GetStatusBarTexture():SetHorizTile(false)
+			Vengeance:SetStatusBarColor(.6, .2, .2 )
+			Vengeance:SetBackdrop({bgFile = C.media.blank})
+			Vengeance:SetBackdropColor(0, 0, 0, 0)
+			
+			Vengeance.Text = T.SetFontString(Vengeance, C.media.font, 12)
+			Vengeance.Text:SetPoint("CENTER")
+			
+			Vengeance.bg = Vengeance:CreateTexture(nil, 'BORDER')
+			Vengeance.bg:SetAllPoints(Vengeance)
+			Vengeance.bg:SetTexture(unpack(C["media"].backdropcolor))
+			
+			self.Vengeance = Vengeance
+			
 			
 			-- show druid mana when shapeshifted in bear, cat or whatever
 			if T.myclass == "DRUID" then

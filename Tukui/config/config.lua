@@ -8,11 +8,12 @@ C["general"] = {
 }
 
 C["unitframes"] = {
+	["layout"] = "Tukui",								-- which unitframe layout to load
 	-- general options
 	["enable"] = true,                                  -- do i really need to explain this?
 	["enemyhcolor"] = false,                            -- enemy target (players) color by hostility, very useful for healer.
 	["unitcastbar"] = true,                             -- enable tukui castbar
-	["cblatency"] = true,                              -- enable castbar latency
+	["cblatency"] = true,                     			-- enable castbar latency
 	["cbicons"] = true,                                 -- enable icons on castbar
 	["auratimer"] = true,                               -- enable timers on buffs/debuffs
 	["auratextscale"] = 11,                             -- the font size of buffs/debuffs timers on unitframes
@@ -20,11 +21,11 @@ C["unitframes"] = {
 	["targetauras"] = true,                             -- enable auras on target unit frame
 	["lowThreshold"] = 20,                              -- global low threshold, for low mana warning.
 	["targetpowerpvponly"] = true,                      -- enable power text on pvp target only
-	["totdebuffs"] = true,                             -- enable tot debuffs (high reso only)
+	["totdebuffs"] = true,                         	    -- enable tot debuffs (high reso only)
 	["showtotalhpmp"] = false,                          -- change the display of info text on player and target with XXXX/Total.
 	["showsmooth"] = true,                              -- enable smooth bar
-	["charportrait"] = true,                           -- do i really need to explain this?
-	["maintank"] = true,                               -- enable maintank
+	["charportrait"] = true,                    	    -- do i really need to explain this?
+	["maintank"] = true,                     	        -- enable maintank
 	["mainassist"] = false,                             -- enable mainassist
 	["unicolor"] = false,                               -- enable unicolor theme
 	["combatfeedback"] = true,                          -- enable combattext on player and target.
@@ -60,7 +61,7 @@ C["arena"] = {
 
 C["actionbar"] = {
 	["enable"] = true,                                  -- enable tukui action bars
-	["hotkey"] = true,                                 -- enable hotkey display because it was a lot requested
+	["hotkey"] = true,                              	-- enable hotkey display because it was a lot requested
 	["hideshapeshift"] = false,                         -- hide shapeshift or totembar because it was a lot requested.
 	["showgrid"] = true,                                -- show grid on empty button
 	["buttonsize"] = 27,                                -- normal buttons size
@@ -150,7 +151,7 @@ C["merchant"] = {
 }
 
 C["error"] = {
-	["enable"] = false,                                  -- true to enable this mod, false to disable
+	["enable"] = true,                                  -- true to enable this mod, false to disable
 	filter = {                                          -- what messages to not hide
 		[INVENTORY_FULL] = true,                        -- inventory is full will not be hidden by default
 	},

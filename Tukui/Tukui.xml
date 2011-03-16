@@ -36,6 +36,7 @@
 	<Script file="core\disable.lua"/>
 	<Script file="core\clientfonts.lua"/>
 	<Script file="modules\blizzard\watchframe.lua"/>
+	<Script file="modules\blizzard\worldstatealwaysupframe.lua"/>
 	<Script file="modules\blizzard\durability.lua"/>
 	<Script file="modules\blizzard\vehicle.lua"/>
 	<Script file="modules\blizzard\capturebar.lua"/>
@@ -61,7 +62,8 @@
 	<Script file="modules\panels\panels.lua"/>
 	<Script file="modules\datatext\colors.lua"/>
 	<Script file="modules\panels\battlenet.lua"/>
-	<Script file="modules\panels\RaidUtility.lua"/>
+	<Script file="modules\misc\raidutility.lua"/>
+	<Script file="modules\misc\raidbuffreminder.lua"/>
 	<Script file="modules\datatext\armor.lua"/>
 	<Script file="modules\datatext\avoidance.lua"/>
 	<Script file="modules\datatext\bags.lua"/>
@@ -82,6 +84,7 @@
 	<Script file="modules\datatext\hit.lua"/>
 	<Script file="modules\datatext\micromenu.lua"/>
 	<Script file="modules\datatext\mastery.lua"/>
+	<Script file="modules\datatext\location_coords.lua"/>
 	<Script file="modules\actionbars\Bind.lua"/>
 	<Script file="modules\actionbars\Hide.lua"/>
 	<Script file="modules\actionbars\Bar1.lua"/>
@@ -118,6 +121,7 @@
 	<Include file="modules\unitframes\templates\tankassist.xml"/>
 	<Script file="modules\unitframes\tags\tags.lua"/>
 	<Script file="modules\unitframes\layouts\tukui.lua"/>
+	<Script file="modules\unitframes\layouts\hydra.lua"/>
 	<Script file="modules\notifications\hunterpethappiness.lua"/>	
 	<Script file="modules\misc\altpowerbar.lua"/>
 	<Script file="modules\misc\threatbar.lua"/>
