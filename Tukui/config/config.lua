@@ -8,7 +8,7 @@ C["general"] = {
 }
 
 C["unitframes"] = {
-	["layout"] = "Tukui",								-- which unitframe layout to load
+	["layout"] = "Xirasis",								-- which unitframe layout to load
 	-- general options
 	["enable"] = true,                                  -- do i really need to explain this?
 	["enemyhcolor"] = false,                            -- enemy target (players) color by hostility, very useful for healer.
@@ -27,7 +27,7 @@ C["unitframes"] = {
 	["charportrait"] = true,                    	    -- do i really need to explain this?
 	["maintank"] = true,                     	        -- enable maintank
 	["mainassist"] = false,                             -- enable mainassist
-	["unicolor"] = false,                               -- enable unicolor theme
+	["unicolor"] = true,                               -- enable unicolor theme
 	["combatfeedback"] = true,                          -- enable combattext on player and target.
 	["playeraggro"] = true,                             -- color player border to red if you have aggro on current target.
 	["healcomm"] = false,                               -- enable healprediction support.
