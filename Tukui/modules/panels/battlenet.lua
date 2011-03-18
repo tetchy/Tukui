@@ -105,3 +105,58 @@ lmenushow:RegisterForClicks("AnyUp") lmenushow:SetScript("OnClick", function()
 		buttontext:SetText(hexa.."<<"..hexb)
 	end
 end)
+
+if C["datatext"].battlenet == true then
+	-- Battle.Net Bar
+	local battlenet = CreateFrame("Frame", "TukuiBattleNet", UIParent)
+	battlenet:CreatePanel(battlenet, 200, 20, "TOP", TukuiTopBar, "BOTTOM", 5, -100)
+	--battlenet:SetClampedToScreen(true)
+	battlenet:SetFrameLevel(2)
+	battlenet:SetBackdrop({
+	bgFile = C["media"].battlenetl, 
+	edgeFile = C["media"].blank, 
+	tile = false, tileSize = 0, edgeSize = 1, 
+	insets = { left = -1, right = -1, top = -1, bottom = -1}
+	})
+	battlenet:SetBackdropBorderColor(unpack(C["media"].bordercolor))
+
+	-- Toggle Button
+	local battletoggle = CreateFrame("Button", "BattlenetToggle", UIParent)
+	local battletext = battletoggle:CreateFontString(nil, "OVERLAY", nil)
+	battletext:SetFont(C.media.uffontp, 10, "OUTLINE")
+	battletext:SetText(hexa.."<<"..hexb)
+	battletext:SetPoint("CENTER", 2, 0.5)
+	battletoggle:CreatePanel(battletoggle, battletext:GetWidth()+20, 15, "RIGHT", battlenet, "RIGHT", -3, 0)
+	battletoggle:SetFrameLevel(battlenet:GetFrameLevel() + 1)
+
+	-- Frame Holder
+	local battleframe = CreateFrame("Frame", "BattlenetHolder", UIParent)
+	battleframe:CreatePanel(battleframe, 200, 95, "TOPLEFT", battlenet, "BOTTOMLEFT", 0, 1)
+	battleframe:SetFrameLevel(2)
+	battleframe:SetBackdropColor(unpack(C["media"].backdropcolor))
+	battleframe:SetBackdropBorderColor(unpack(C["media"].bordercolor))
+
+	-- Battle.net image
+	local bimage = CreateFrame("Frame", nil, battleframe)
+	bimage:CreatePanel(bimage, 44, 44, "TOPLEFT", battleframe, "TOPLEFT", 2, -2)
+	bimage:SetFrameLevel(3)
+	bimage:SetBackdrop({
+	bgFile = C["media"].battlenet,
+	edgeFile = C["media"].blank,
+	tile = false, tileSize = 0, edgeSize = 1,
+	insets = { left = -1, right = -1, top = -1, bottom = -1}
+	})
+	bimage:SetBackdropBorderColor(unpack(C["media"].bordercolor))
+
+	-- Battlenet Datatext placeholder
+	-- Top
+	local battletopstat = CreateFrame("Frame", "BattleStatTop", battleframe)
+	battletopstat:CreatePanel(battletopstat, (battleframe:GetWidth() -49), ((bimage:GetHeight() / 2)), "TOPLEFT", bimage, "TOPRIGHT", 0, 0)
+	battletopstat:SetFrameLevel(3) 
+
+	-- Bottom
+	local battlebottomstat = CreateFrame("Frame", "BattleStatBottom", battleframe)
+	battlebottomstat:CreatePanel(battlebottomstat, (battleframe:GetWidth() -49), ((bimage:GetHeight() / 2)), "BOTTOMLEFT", bimage, "BOTTOMRIGHT", 0, 0)
+	battlebottomstat:SetFrameLevel(3) 
+
+end
