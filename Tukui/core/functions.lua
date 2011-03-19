@@ -16,10 +16,10 @@ T.PP = function(p, obj)
 	local right = TukuiInfoRight
 	local mapleft = TukuiMinimapStatsLeft
 	--local mapright = TukuiMinimapStatsRight
-	local battletop = TukuiBattleNetPTopStat
-	local battlebottom = TukuiBattleNetPBottomStat
-	local goldtop = TukuiGoldPTopStat
-	local goldbottom = TukuiGoldPBottomStat
+	local battletop = BattleStatTop
+	local battlebottom = BattleStatBottom
+	local goldtop = CurrencyStatTop
+	local goldbottom = CurrencyStatBottom
 	local middleleftr = TukuiInfoMiddleLeftR
 	local middlerightl = TukuiInfoMiddleRightL
 	

@@ -214,7 +214,7 @@ local function Shared(self, unit)
 				--Name:SetShadowColor(0, 0, 0)
 				--Name:SetShadowOffset(1.25, -1.25)
 				
-				self:Tag(Name, '[Tukui:diffcolor][level][Tukui:getnamecolor][Tukui:namelong][shortclassification]')
+				self:Tag(Name, '[Tukui:diffcolor][level] [Tukui:getnamecolor][Tukui:namelong][shortclassification]')
 				self.Name = Name
 			end
 			

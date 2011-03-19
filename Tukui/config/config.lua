@@ -109,7 +109,7 @@ C["datatext"] = {
 	["hit"] = 13,
 	["mastery"] = 3,
 	["micromenu"] = 0,
-	["battlenet"] = false,
+	["battlenet"] = true,
 
 	-- Color Datatext
 	["classcolor"] = false,                         -- classcolored datatexts
@@ -118,7 +118,7 @@ C["datatext"] = {
 	["battleground"] = true,                            -- enable 3 stats in battleground only that replace stat1,stat2,stat3.
 	["time24"] = false,                                  -- set time to 24h format.
 	["localtime"] = true,                              -- set time to local time instead of server time.
-	["fontsize"] = 12,                                  -- font size for panels.
+	["fontsize"] = 10,                                  -- font size for panels.
 }
 
 C["chat"] = {

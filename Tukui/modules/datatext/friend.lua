@@ -1,7 +1,7 @@
 --------------------------------------------------------------------
 -- FRIEND
 --------------------------------------------------------------------
-local E, C, L = unpack(select(2, ...)) -- Import Functions/Constants, Config, Locales
+local T, C, L = unpack(select(2, ...)) -- Import Functions/Constants, Config, Locales
 
 if C["datatext"].friends and C["datatext"].friends > 0 then
 
@@ -62,7 +62,7 @@ if C["datatext"].friends and C["datatext"].friends > 0 then
 
 	local Text  = TukuiInfoLeft:CreateFontString(nil, "OVERLAY")
 	Text:SetFont(C.media.font, C["datatext"].fontsize)
-	E.PP(C["datatext"].friends, Text)
+	T.PP(C["datatext"].friends, Text)
 
 	local friendMenuFrame = nil
 
@@ -183,9 +183,9 @@ if C["datatext"].friends and C["datatext"].friends > 0 then
 			local totalfriends = total + BNtotal					
 
 			if online > 0 or BNonline > 0 then
-				GameTooltip:SetOwner(self, "ANCHOR_TOP", 0, E.Scale(6));
+				GameTooltip:SetOwner(self, "ANCHOR_TOP", 0, T.Scale(6));
 				GameTooltip:ClearAllPoints()
-				--GameTooltip:SetPoint("BOTTOM", self, "TOP", 0, E.mult)
+				--GameTooltip:SetPoint("BOTTOM", self, "TOP", 0, T.mult)
 				GameTooltip:ClearLines()
 				GameTooltip:AddDoubleLine(L.datatext_friendlist, format("%s/%s",totalonline,totalfriends),tthead.r,tthead.g,tthead.b,tthead.r,tthead.g,tthead.b)
 
