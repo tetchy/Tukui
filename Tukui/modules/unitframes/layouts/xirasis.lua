@@ -610,7 +610,7 @@ local function Shared(self, unit)
 		if (unit == "target") then			
 			-- Unit name on target
 			local Name = health:CreateFontString(nil, "OVERLAY")
-			Name:Point("RIGHT", panel, "RIGHT", 0, -4)
+			Name:Point("BOTTOMRIGHT", health, "BOTTOMRIGHT", 0, 4)
 			Name:SetJustifyH("RIGHT")
 			Name:SetFont(font1, fontsize, 'THINOUTLINE')
 			Name:SetShadowColor(0, 0, 0)
