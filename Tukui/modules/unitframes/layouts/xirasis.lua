@@ -184,7 +184,7 @@ local function Shared(self, unit)
             local portrait = CreateFrame("PlayerModel", nil, health)
             portrait.PostUpdate = function(self) self:SetAlpha(0) self:SetAlpha(0.20) end -- change the 0.15 to the alphavalue you want
 			if C["unitframes"].unicolor == true then
-				portrait.PostUpdate = function(self) self:SetAlpha(0) self:SetAlpha(0.10) end
+				portrait.PostUpdate = function(self) self:SetAlpha(0) self:SetAlpha(0.20) end
 			end
             portrait:SetAllPoints(health)
 			portrait:SetFrameLevel(3)
@@ -944,7 +944,7 @@ local function Shared(self, unit)
             local portrait = CreateFrame("PlayerModel", nil, health)
             portrait.PostUpdate = function(self) self:SetAlpha(0) self:SetAlpha(0.20) end -- change the 0.15 to the alphavalue you want
 			if C["unitframes"].unicolor == true then
-				portrait.PostUpdate = function(self) self:SetAlpha(0) self:SetAlpha(0.10) end
+				portrait.PostUpdate = function(self) self:SetAlpha(0) self:SetAlpha(0.20) end
 			end
             portrait:SetAllPoints(health)
 			portrait:SetFrameLevel(3)
@@ -1069,7 +1069,7 @@ local function Shared(self, unit)
             portrait.PostUpdate = function(self) self:SetAlpha(0) self:SetAlpha(0.20) 
 		end 
 		if C["unitframes"].unicolor == true then
-			portrait.PostUpdate = function(self) self:SetAlpha(0) self:SetAlpha(0.10) end
+			portrait.PostUpdate = function(self) self:SetAlpha(0) self:SetAlpha(0.20) end
 		end
             portrait:SetAllPoints(health)
 			portrait:SetFrameLevel(3)
@@ -1220,7 +1220,7 @@ local function Shared(self, unit)
             local portrait = CreateFrame("PlayerModel", nil, health)
             portrait.PostUpdate = function(self) self:SetAlpha(0) self:SetAlpha(0.20) end -- change the 0.15 to the alphavalue you want
 			if C["unitframes"].unicolor == true then
-				portrait.PostUpdate = function(self) self:SetAlpha(0) self:SetAlpha(0.10) end
+				portrait.PostUpdate = function(self) self:SetAlpha(0) self:SetAlpha(0.20) end
 			end
             portrait:SetAllPoints(health)
 			portrait:SetFrameLevel(3)
@@ -1387,7 +1387,7 @@ local function Shared(self, unit)
             local portrait = CreateFrame("PlayerModel", nil, health)
             portrait.PostUpdate = function(self) self:SetAlpha(0) self:SetAlpha(0.20) end -- change the 0.15 to the alphavalue you want
 			if C["unitframes"].unicolor == true then
-				portrait.PostUpdate = function(self) self:SetAlpha(0) self:SetAlpha(0.10) end
+				portrait.PostUpdate = function(self) self:SetAlpha(0) self:SetAlpha(0.20) end
 			end
             portrait:SetAllPoints(health)
 			portrait:SetFrameLevel(3)
@@ -1528,7 +1528,7 @@ local function Shared(self, unit)
             local portrait = CreateFrame("PlayerModel", nil, health)
             portrait.PostUpdate = function(self) self:SetAlpha(0) self:SetAlpha(0.20) end -- change the 0.15 to the alphavalue you want
 			if C["unitframes"].unicolor == true then
-				portrait.PostUpdate = function(self) self:SetAlpha(0) self:SetAlpha(0.10) end
+				portrait.PostUpdate = function(self) self:SetAlpha(0) self:SetAlpha(0.20) end
 			end
             portrait:SetAllPoints(health)
 			portrait:SetFrameLevel(3)
@@ -1723,7 +1723,7 @@ player:Size(250, 36)
 
 -- focus
 local focus = oUF:Spawn('focus', "TukuiFocus")
-focus:SetPoint("BOTTOMLEFT", InvTukuiActionBarBackground, "TOPLEFT", 0, 246)
+focus:SetPoint("BOTTOMLEFT", InvTukuiActionBarBackground, "TOPLEFT", -200, 246)
 focus:Size(200, 29)
 
 -- focus target
@@ -1751,7 +1751,7 @@ if C.arena.unitframes then
 	for i = 1, 5 do
 		arena[i] = oUF:Spawn("arena"..i, "TukuiArena"..i)
 		if i == 1 then
-			arena[i]:SetPoint("BOTTOMRIGHT", InvTukuiActionBarBackground, "TOPRIGHT", 0, 246)
+			arena[i]:SetPoint("BOTTOMRIGHT", InvTukuiActionBarBackground, "TOPRIGHT", 200, 246)
 		else
 			arena[i]:SetPoint("BOTTOM", arena[i-1], "TOP", 0, 35)
 		end
@@ -1773,7 +1773,7 @@ if C["unitframes"].showboss then
 	for i = 1, MAX_BOSS_FRAMES do
 		boss[i] = oUF:Spawn("boss"..i, "TukuiBoss"..i)
 		if i == 1 then
-			boss[i]:SetPoint("BOTTOMRIGHT", InvTukuiActionBarBackground, "TOPRIGHT", 0,246)
+			boss[i]:SetPoint("BOTTOMRIGHT", InvTukuiActionBarBackground, "TOPRIGHT", 200,246)
 		else
 			boss[i]:SetPoint('BOTTOM', boss[i-1], 'TOP', 0, 34)             
 		end

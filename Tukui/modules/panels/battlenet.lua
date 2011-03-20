@@ -92,17 +92,15 @@ if C["datatext"].battlenet == true then
 	battletoggle:RegisterForClicks("AnyUp") 
 	
 	battletoggle:SetScript("OnClick", function()
-		--if battleframe:IsShown() then
-		if on == 0 then
-			on = 1
-			--battleframe:Hide()
-			--battleframe:SetAlpha(0.2)
+		if battleframe:IsShown() then
+			battleframe:Hide()
 			battleframe:SetPoint("TOPLEFT", UIParent, "TOPLEFT", 0, 500)
 			battletext:SetText(hexa..">>"..hexb)
 		else
-			on = 0
-			--battleframe:Show()
-			battleframe:SetPoint("TOPLEFT", battlenet, "BOTTOMLEFT", 0, 0)
+			battleframe:Show()
+			UIFrameFadeIn(battleframe, 0.6, 0, 1)
+			battleframe:Point("TOPLEFT", battlenet, "BOTTOMLEFT", 0,0)
+			--battleframe:SetPoint("TOPLEFT", battlenet, "BOTTOMLEFT", 0, 0)
 			battleframe:SetAlpha(1)
 			battletext:SetText(hexa.."<<"..hexb)
 		end
