@@ -742,6 +742,7 @@ local function Shared(self, unit)
 			castbar.Text = T.SetFontString(castbar, font1, fontsize)
 			castbar.Text:Point("LEFT", castbar, "LEFT", 4, 0)
 			castbar.Text:SetTextColor(0.84, 0.75, 0.65)
+			castbar.Text:SetWidth(200)
 			
 			if C["unitframes"].cbicons == true then
 				castbar.button = CreateFrame("Frame", nil, castbar)
@@ -1267,6 +1268,7 @@ local function Shared(self, unit)
 		castbar.Text = T.SetFontString(castbar, font1, fontsize)
 		castbar.Text:SetPoint("LEFT", castbar, "LEFT", 4, 0)
 		castbar.Text:SetTextColor(0.84, 0.75, 0.65)
+		castbar.Text:SetWidth(150)
 		
 		castbar.CustomDelayText = T.CustomCastDelayText
 		castbar.PostCastStart = T.CheckCast
@@ -1671,6 +1673,15 @@ local function Shared(self, unit)
 		health:SetPoint("TOPLEFT")
 		health:SetPoint("TOPRIGHT")
 		health:SetStatusBarTexture(normTex)
+		
+		-- health border
+		local healthborder = CreateFrame("Frame", nil, self)
+		healthborder:CreatePanel("Default", 1, 1, "CENTER", health, "CENTER", 0, 0)
+		healthborder:ClearAllPoints()
+		healthborder:Point("TOPLEFT", health, -2, 2)
+		healthborder:Point("BOTTOMRIGHT", health, 2, -2)
+		healthborder:SetFrameLevel(2)
+		healthborder:SetFrameStrata("MEDIUM")
 		
 		local healthBG = health:CreateTexture(nil, 'BORDER')
 		healthBG:SetAllPoints()

@@ -290,7 +290,7 @@ local function CheckRole(self, event, unit)
 	local resilience
 	local resilperc = GetCombatRatingBonus(COMBAT_RATING_RESILIENCE_PLAYER_DAMAGE_TAKEN)
 	if resilperc > GetDodgeChance() and resilperc > GetParryChance() then
-		resilience = false
+		resilience = true
 	else
 		resilience = false
 	end
