@@ -60,42 +60,43 @@ local function Shared(self, unit)
 		health.colorReaction = true			
 	end
 	
-	local power = CreateFrame("StatusBar", nil, self)
-	power:Size(45, 5)
-	power:Point("CENTER", health, "BOTTOM", 0, -2)
-	power:SetFrameLevel(4)
-	--power:Point("TOPLEFT", health, "BOTTOMLEFT", 0, -1)
-	--power:SetPoint("TOPRIGHT", health, "BOTTOMRIGHT", 0, -1)
-	power:SetStatusBarTexture(C["media"].normTex)
-	self.Power = power
-	
-	power.frequentUpdates = true
-	power.colorDisconnected = true
-
-	power.bg = self.Power:CreateTexture(nil, "BORDER")
-	power.bg:SetAllPoints(power)
-	power.bg:SetTexture(C["media"].normTex)
-	power.bg:SetAlpha(1)
-	power.bg.multiplier = 0.4
-	
-	--power border
-	local powerborder = CreateFrame("Frame", nil, self)
-	powerborder:CreatePanel("Default", 1, 1, "CENTER", power, "CENTER", 0, 0)
-	powerborder:ClearAllPoints()
-	powerborder:Point("TOPLEFT", power, -2, 2)
-	powerborder:Point("BOTTOMRIGHT", power, 2, -2)
-	powerborder:SetFrameLevel(4)
-	powerborder:SetFrameStrata("MEDIUM")
-	
-	self.Power.bg = power.bg
-	
-	if C.unitframes.unicolor == true then
-		power.colorClass = true
-		power.bg.multiplier = 0.1				
-	else
-		power.colorPower = true
-	end
+	if C["unitframes"].showpower == true then
+		local power = CreateFrame("StatusBar", nil, self)
+		power:Size(45, 5)
+		power:Point("CENTER", health, "BOTTOM", 0, -2)
+		power:SetFrameLevel(4)
+		--power:Point("TOPLEFT", health, "BOTTOMLEFT", 0, -1)
+		--power:SetPoint("TOPRIGHT", health, "BOTTOMRIGHT", 0, -1)
+		power:SetStatusBarTexture(C["media"].normTex)
+		self.Power = power
 		
+		power.frequentUpdates = true
+		power.colorDisconnected = true
+
+		power.bg = self.Power:CreateTexture(nil, "BORDER")
+		power.bg:SetAllPoints(power)
+		power.bg:SetTexture(C["media"].normTex)
+		power.bg:SetAlpha(1)
+		power.bg.multiplier = 0.4
+		
+		--power border
+		local powerborder = CreateFrame("Frame", nil, self)
+		powerborder:CreatePanel("Default", 1, 1, "CENTER", power, "CENTER", 0, 0)
+		powerborder:ClearAllPoints()
+		powerborder:Point("TOPLEFT", power, -2, 2)
+		powerborder:Point("BOTTOMRIGHT", power, 2, -2)
+		powerborder:SetFrameLevel(4)
+		powerborder:SetFrameStrata("MEDIUM")
+		
+		self.Power.bg = power.bg
+		if C.unitframes.unicolor == true then
+			power.colorClass = true
+			power.bg.multiplier = 0.1				
+		else
+			power.colorPower = true
+		end
+	end
+	
 	local name = health:CreateFontString(nil, 'OVERLAY')
 	name:SetFont(font2, 10, "THINOUTLINE")
 	name:Point("CENTER", self, "CENTER", 0, 0)
@@ -153,9 +154,7 @@ local function Shared(self, unit)
 		self.Range = range
 	end
 	
-	------------------------------------------------------------------------
-	--      Debuff Highlight
-	------------------------------------------------------------------------
+	--Debuff Highlight
 		local dbh = self.Health:CreateTexture(nil, "OVERLAY", Healthbg)
 		dbh:SetAllPoints(self)
 		dbh:SetTexture(TukuiCF["media"].normTex)
@@ -184,7 +183,7 @@ oUF:Factory(function(self)
 		--'initial-width', T.Scale(76*T.raidscale),
 		'initial-width', ((TukuiChatBackgroundLeft:GetWidth() / 5) - 7),
 		'initial-height', T.Scale(20*T.raidscale),	
-		"showSolo", true,
+		"showSolo", false,
 		"showParty", true, 
 		"showPlayer", C["unitframes"].showplayerinparty, 
 		"showRaid", true, 

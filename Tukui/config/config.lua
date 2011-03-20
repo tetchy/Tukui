@@ -23,7 +23,7 @@ C["unitframes"] = {
 	["targetpowerpvponly"] = true,                      -- enable power text on pvp target only
 	["totdebuffs"] = true,                         	    -- enable tot debuffs (high reso only)
 	["showtotalhpmp"] = false,                          -- change the display of info text on player and target with XXXX/Total.
-	["showownname"] = true,								-- Duh, Shows your name!
+	["showownname"] = false,								-- Duh, Shows your name!
 	["showsmooth"] = true,                              -- enable smooth bar
 	["charportrait"] = true,                    	    -- do i really need to explain this?
 	["maintank"] = true,                     	        -- enable maintank
@@ -44,6 +44,7 @@ C["unitframes"] = {
 	["raidunitdebuffwatch"] = true,                     -- track important spell to watch in pve for grid mode.
 	["gridhealthvertical"] = true,                      -- enable vertical grow on health bar for grid mode.
 	["showplayerinparty"] = true,                      -- show my player frame in party
+	["showpower"] = true, 								-- show player power bars.
 	["gridscale"] = 1,                                  -- set the healing grid scaling
 	
 	-- boss frames

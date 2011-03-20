@@ -1723,7 +1723,7 @@ player:Size(250, 36)
 
 -- focus
 local focus = oUF:Spawn('focus', "TukuiFocus")
-focus:SetPoint("BOTTOMLEFT", InvTukuiActionBarBackground, "TOPLEFT", -200, 246)
+focus:SetPoint("BOTTOMLEFT", InvTukuiActionBarBackground, "TOPLEFT", -90, 246)
 focus:Size(200, 29)
 
 -- focus target
