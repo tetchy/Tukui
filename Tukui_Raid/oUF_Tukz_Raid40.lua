@@ -98,9 +98,10 @@ local function Shared(self, unit)
 		
 	local name = health:CreateFontString(nil, 'OVERLAY')
 	name:SetFont(font2, 10, "THINOUTLINE")
-	name:Point("CENTER", self, "CENTER", 0, 0)
+	name:Point("CENTER", self, "CENTER", 0, 2)
 	name:SetJustifyH("CENTER")
-	self:Tag(name, '[Tukui:getnamecolor][Tukui:nameshort]')
+	name:SetWidth(((TukuiChatBackgroundLeft:GetWidth() / 5) - 7))
+	self:Tag(name, '[Tukui:dead][Tukui:afk][Tukui:getnamecolor][Tukui:nameshort]')
 	self.Name = name
 	
 	if C["unitframes"].showsymbols == true then
@@ -119,16 +120,29 @@ local function Shared(self, unit)
 		self:RegisterEvent('UNIT_THREAT_SITUATION_UPDATE', T.UpdateThreat)
     end
 	
+	local leader = health:CreateTexture(nil, "OVERLAY")
+    leader:Height(12)
+    leader:Width(12)
+    leader:SetPoint("TOPLEFT", 0, 6)
+	self.Leader = leader
+	
+	local MasterLooter = health:CreateTexture(nil, "OVERLAY")
+    MasterLooter:Height(12)
+    MasterLooter:Width(12)
+	self.MasterLooter = MasterLooter
+    self:RegisterEvent("PARTY_LEADER_CHANGED", T.MLAnchorUpdate)
+    self:RegisterEvent("PARTY_MEMBERS_CHANGED", T.MLAnchorUpdate)
+	
 	local LFDRole = health:CreateTexture(nil, "OVERLAY")
     LFDRole:Height(6*T.raidscale)
     LFDRole:Width(6*T.raidscale)
-	LFDRole:Point("TOPLEFT", 2, -2)
+	LFDRole:Point("BOTTOMLEFT", 0, 0)
 	LFDRole:SetTexture("Interface\\AddOns\\Tukui\\medias\\textures\\lfdicons.blp")
 	self.LFDRole = LFDRole
 	
 	local ReadyCheck = health:CreateTexture(nil, "OVERLAY")
-	ReadyCheck:Height(12*T.raidscale)
-	ReadyCheck:Width(12*T.raidscale)
+	ReadyCheck:Height(20*T.raidscale)
+	ReadyCheck:Width(20*T.raidscale)
 	ReadyCheck:SetPoint('CENTER')
 	self.ReadyCheck = ReadyCheck
 	
