@@ -201,6 +201,47 @@ local function Shared(self, unit)
 			maxOverflow = 1,
 		}
 	end
+	
+	if C["unitframes"].raidunitdebuffwatch == true then
+		-- AuraWatch (corner icon)
+		T.createAuraWatch(self,unit)
+		
+		-- Raid Debuffs (big middle icon)
+		local RaidDebuffs = CreateFrame('Frame', nil, self)
+		RaidDebuffs:Height(24*C["unitframes"].gridscale)
+		RaidDebuffs:Width(24*C["unitframes"].gridscale)
+		RaidDebuffs:Point('CENTER', health, 1,0)
+		RaidDebuffs:SetFrameStrata(health:GetFrameStrata())
+		RaidDebuffs:SetFrameLevel(health:GetFrameLevel() + 2)
+		
+		RaidDebuffs:SetTemplate("Default")
+		
+		RaidDebuffs.icon = RaidDebuffs:CreateTexture(nil, 'OVERLAY')
+		RaidDebuffs.icon:SetTexCoord(.1,.9,.1,.9)
+		RaidDebuffs.icon:Point("TOPLEFT", 2, -2)
+		RaidDebuffs.icon:Point("BOTTOMRIGHT", -2, 2)
+		
+		-- just in case someone want to add this feature, uncomment to enable it
+		--[[
+		if C["unitframes"].auratimer then
+			RaidDebuffs.cd = CreateFrame('Cooldown', nil, RaidDebuffs)
+			RaidDebuffs.cd:SetPoint("TOPLEFT", T.Scale(2), T.Scale(-2))
+			RaidDebuffs.cd:SetPoint("BOTTOMRIGHT", T.Scale(-2), T.Scale(2))
+			RaidDebuffs.cd.noOCC = true -- remove this line if you want cooldown number on it
+		end
+		--]]
+		
+		RaidDebuffs.count = RaidDebuffs:CreateFontString(nil, 'OVERLAY')
+		RaidDebuffs.count:SetFont(C["media"].uffont, 9*C["unitframes"].gridscale, "THINOUTLINE")
+		RaidDebuffs.count:SetPoint('BOTTOMRIGHT', RaidDebuffs, 'BOTTOMRIGHT', 0, 2)
+		RaidDebuffs.count:SetTextColor(1, .9, 0)
+		
+		RaidDebuffs:FontString('time', C["media"].uffont, 9*C["unitframes"].gridscale, "THINOUTLINE")
+		RaidDebuffs.time:SetPoint('CENTER')
+		RaidDebuffs.time:SetTextColor(1, .9, 0)
+		
+		self.RaidDebuffs = RaidDebuffs
+    end
 
 	return self
 end
