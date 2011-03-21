@@ -104,11 +104,11 @@ C["datatext"] = {
 	["power"] = 14,                                     -- show your attackpower/spellpower/healpower/rangedattackpower whatever stat is higher gets displayed
 	["haste"] = 1,                                      -- show your haste rating on panels.
 	["crit"] = 0,                                       -- show your crit rating on panels.
-	["avd"] = 1,                                        -- show your current avoidance against the level of the mob your targeting
+	["avd"] = 0,                                        -- show your current avoidance against the level of the mob your targeting
 	["armor"] = 0,                                      -- show your armor value against the level mob you are currently targeting
 	["currency"] = 11,                                  -- show your tracked currency on panels
 	["hit"] = 13,
-	["mastery"] = 3,
+	["mastery"] = 0,
 	["micromenu"] = 0,
 	["battlenet"] = true,
 
