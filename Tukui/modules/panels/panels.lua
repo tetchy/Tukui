@@ -261,19 +261,19 @@ if C["datatext"].battleground == true then
 	bgframe:EnableMouse(true)
 end
 
--- Go Away Skada!
-local f=CreateFrame"Frame"
-f:RegisterEvent("PLAYER_LOGIN")
-f:SetScript("OnEvent", function(self)
-	local skada=_G["SkadaBarWindow"..Skada.db.profile.windows[1].name]
-	if skada:IsShown() then ChatFrame4:Hide() else ChatFrame4:Show() end
-	skada:HookScript("OnShow", function() ChatFrame4:Hide() end)
-	skada:HookScript("OnHide", function() ChatFrame4:Show() end)
-	self:UnregisterEvent("PLAYER_LOGIN")
-end)
 
--- Skada Toggle Button
 if IsAddOnLoaded("Skada") then
+	-- Go Away Skada!
+	local f=CreateFrame"Frame"
+	f:RegisterEvent("PLAYER_LOGIN")
+	f:SetScript("OnEvent", function(self)
+		local skada=_G["SkadaBarWindow"..Skada.db.profile.windows[1].name]
+		if skada:IsShown() then ChatFrame4:Hide() else ChatFrame4:Show() end
+		skada:HookScript("OnShow", function() ChatFrame4:Hide() end)
+		skada:HookScript("OnHide", function() ChatFrame4:Show() end)
+		self:UnregisterEvent("PLAYER_LOGIN")
+	end)
+	-- Skada Toggle Button
 	local toggleskada = CreateFrame("Frame", "TukuiSkadaToggle", UIParent)
 	local toggletext = toggleskada:CreateFontString(nil, "OVERLAY", nil)
 	toggletext:SetFont(C.media.font,C["datatext"].fontsize, "OUTLINE")

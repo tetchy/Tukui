@@ -23,7 +23,7 @@ C["unitframes"] = {
 	["targetpowerpvponly"] = true,                      -- enable power text on pvp target only
 	["totdebuffs"] = true,                         	    -- enable tot debuffs (high reso only)
 	["showtotalhpmp"] = false,                          -- change the display of info text on player and target with XXXX/Total.
-	["showownname"] = false,								-- Duh, Shows your name!
+	["showownname"] = true,								-- Duh, Shows your name!
 	["showsmooth"] = true,                              -- enable smooth bar
 	["charportrait"] = true,                    	    -- do i really need to explain this?
 	["maintank"] = true,                     	        -- enable maintank
@@ -99,10 +99,10 @@ C["datatext"] = {
 	["guild"] = 10,                                      -- show number on guildmate connected on panels
 	["dur"] = 2,                                        -- show your equipment durability on panels.
 	["friends"] = 9,                                    -- show number of friends connected.
-	["dps_text"] = 0,                                   -- show a dps meter on panels
+	["dps_text"] = 3,                                   -- show a dps meter on panels
 	["hps_text"] = 0,                                   -- show a heal meter on panels
 	["power"] = 14,                                      -- show your attackpower/spellpower/healpower/rangedattackpower whatever stat is higher gets displayed
-	["haste"] = 0,                                      -- show your haste rating on panels.
+	["haste"] = 1,                                      -- show your haste rating on panels.
 	["crit"] = 0,                                       -- show your crit rating on panels.
 	["avd"] = 1,                                        -- show your current avoidance against the level of the mob your targeting
 	["armor"] = 0,                                      -- show your armor value against the level mob you are currently targeting
@@ -113,7 +113,7 @@ C["datatext"] = {
 	["battlenet"] = true,
 
 	-- Color Datatext
-	["classcolor"] = false,                         -- classcolored datatexts
+	["classcolor"] = true,                         -- classcolored datatexts
 	["color"] = "|cff00AAFF",                       -- datatext color if classcolor = false (|cffFFFFFF = white)
 	
 	["battleground"] = true,                            -- enable 3 stats in battleground only that replace stat1,stat2,stat3.

@@ -3,7 +3,7 @@ local T, C, L = unpack(select(2, ...)) -- Import: T - functions, constants, vari
 if C["datatext"].battlenet == true then
 	-- Battle.Net Bar
 	local battlenet = CreateFrame("Frame", "TukuiBattleNet", UIParent)
-	battlenet:CreatePanel(battlenet, 200, 20, "TOPLEFT", UIParent, "TOPLEFT", 0, -22)
+	battlenet:CreatePanel(battlenet, 200, 20, "TOPLEFT", UIParent, "TOPLEFT", 2, -22)
 	--battlenet:SetClampedToScreen(true)
 	battlenet:SetFrameLevel(2)
 	battlenet:SetFrameStrata("BACKGROUND")
@@ -20,14 +20,14 @@ if C["datatext"].battlenet == true then
 	local battletext = battletoggle:CreateFontString(nil, "OVERLAY", nil)
 	battletext:SetFont(C.media.uffontp, 10, "OUTLINE")
 	battletext:SetText(hexa.."<<"..hexb)
-	battletext:SetPoint("CENTER", 2, 0.5)
-	battletoggle:CreatePanel(battletoggle, battletext:GetWidth()+20, 15, "RIGHT", battlenet, "RIGHT", -3, 0)
+	battletext:SetPoint("CENTER", 2, 0)
+	battletoggle:CreatePanel(battletoggle, battletext:GetWidth() + 5, battletext:GetWidth(), "RIGHT", battlenet, "RIGHT", -3, 0)
 	battletoggle:SetFrameLevel(battlenet:GetFrameLevel() + 1)
 	
 
 	-- Frame Holder
 	local battleframe = CreateFrame("Frame", "BattlenetHolder", UIParent)
-	battleframe:CreatePanel(battleframe, 200, 95, "TOPLEFT", battlenet, "BOTTOMLEFT", 0, 1)
+	battleframe:CreatePanel(battleframe, 200, 95, "TOPLEFT", battlenet, "BOTTOMLEFT", 0, -1)
 	battleframe:SetFrameLevel(1)
 	battleframe:SetFrameStrata("BACKGROUND")
 	battleframe:SetBackdropColor(unpack(C["media"].backdropcolor))
@@ -99,8 +99,7 @@ if C["datatext"].battlenet == true then
 		else
 			battleframe:Show()
 			UIFrameFadeIn(battleframe, 0.6, 0, 1)
-			battleframe:Point("TOPLEFT", battlenet, "BOTTOMLEFT", 0,0)
-			--battleframe:SetPoint("TOPLEFT", battlenet, "BOTTOMLEFT", 0, 0)
+			battleframe:Point("TOPLEFT", battlenet, "BOTTOMLEFT", 0,-1)
 			battleframe:SetAlpha(1)
 			battletext:SetText(hexa.."<<"..hexb)
 		end

@@ -6,7 +6,7 @@ local T, C, L = unpack(select(2, ...)) -- Import Functions/Constants, Config, Lo
 if not C["datatext"].wowtime or C["datatext"].wowtime == 0 then return end
 
 local europeDisplayFormat = string.join("", "%02d", ":|r%02d")
-local ukDisplayFormat = string.join("", "", "%d", ":|r%02d", " %s|r")
+local ukDisplayFormat = string.join("", "", hexa.."%d"..hexb, ":", hexa.."%02d"..hexb, " %s|r")
 local timerLongFormat = "%d:%02d:%02d"
 local timerShortFormat = "%d:%02d"
 local lockoutInfoFormat = "%s |cffaaaaaa(%s%s, %s/%s)"

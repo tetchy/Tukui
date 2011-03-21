@@ -108,10 +108,10 @@ local function MoveButtonBar(button, bar)
 	if button == TukuiBar4Button then
 		if bar:IsShown() then
 			db.hidebar4 = false
-			button.text:SetText("|cff4BAF4C- - - - - -|r")
+			button.text:SetText(hexa.."-"..hexb)
 		else
 			db.hidebar4 = true
-			button.text:SetText("|cff4BAF4C+ + + + + +|r")
+			button.text:SetText(hexa.."+"..hexb)
 		end
 	end
 	
@@ -197,18 +197,17 @@ TukuiBar3Button.text:Point("CENTER", 1, 1)
 TukuiBar3Button.text:SetText("|cff4BAF4C<|r")
 
 local TukuiBar4Button = CreateFrame("Button", "TukuiBar4Button", UIParent)
-TukuiBar4Button:SetWidth(TukuiBar1:GetWidth())
-TukuiBar4Button:Height(10)
-TukuiBar4Button:Point("TOP", TukuiBar1, "BOTTOM", 0, -2)
+TukuiBar4Button:SetWidth(22)
+TukuiBar4Button:Height(22)
+TukuiBar4Button:Point("TOP", TukuiBottomBar, "TOP", 0, 2)
 TukuiBar4Button:SetTemplate("Default")
 TukuiBar4Button:RegisterForClicks("AnyUp")
-TukuiBar4Button:SetAlpha(0)
 TukuiBar4Button:SetScript("OnClick", function(self) DrPepper(self, TukuiBar4) end)
-TukuiBar4Button:SetScript("OnEnter", function(self) self:SetAlpha(1) end)
-TukuiBar4Button:SetScript("OnLeave", function(self) self:SetAlpha(0) end)
+TukuiBar4Button:SetScript("OnEnter", function(self) self:SetBackdropBorderColor(unpack(C["media"].altclasscolor)) end)
+TukuiBar4Button:SetScript("OnLeave", function(self) self:SetBackdropBorderColor(unpack(C["media"].bordercolor)) end)
 TukuiBar4Button.text = T.SetFontString(TukuiBar4Button, C.media.uffont, 30)
 TukuiBar4Button.text:SetPoint("CENTER", 0, 0)
-TukuiBar4Button.text:SetText("|cff4BAF4C- - - - - -|r")
+TukuiBar4Button.text:SetText(hexa.."-"..hexb)
 
 local TukuiBar5ButtonTop = CreateFrame("Button", "TukuiBar5ButtonTop", UIParent)
 TukuiBar5ButtonTop:SetWidth(TukuiBar5:GetWidth())

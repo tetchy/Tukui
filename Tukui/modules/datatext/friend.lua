@@ -183,7 +183,7 @@ if C["datatext"].friends and C["datatext"].friends > 0 then
 			local totalfriends = total + BNtotal					
 
 			if online > 0 or BNonline > 0 then
-				GameTooltip:SetOwner(self, "ANCHOR_TOP", 0, T.Scale(6));
+				GameTooltip:SetOwner(BattlenetHolder, "ANCHOR_BOTTOM", 0, -3);
 				GameTooltip:ClearAllPoints()
 				--GameTooltip:SetPoint("BOTTOM", self, "TOP", 0, T.mult)
 				GameTooltip:ClearLines()

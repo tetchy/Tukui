@@ -205,7 +205,7 @@ if C["datatext"].guild and C["datatext"].guild > 0 then
 				local online, total, gmotd = 0, GetNumGuildMembers(true), GetGuildRosterMOTD()
 				for i = 0, total do if select(9, GetGuildRosterInfo(i)) then online = online + 1 end end
 
-				GameTooltip:SetOwner(self, "ANCHOR_TOP", 0, T.Scale(6));
+				GameTooltip:SetOwner(BattlenetHolder, "ANCHOR_BOTTOM", 0, -3);
 				GameTooltip:ClearAllPoints()
 				--GameTooltip:SetPoint("BOTTOM", self, "TOP", 0, T.mult)
 				GameTooltip:ClearLines()

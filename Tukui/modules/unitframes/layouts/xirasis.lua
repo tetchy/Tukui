@@ -628,11 +628,7 @@ local function Shared(self, unit)
 				CPoints[i]:Width(12)
 				CPoints[i]:SetTexture(bubbleTex)
 				if i == 1 then
-					if T.lowversion then
-						CPoints[i]:Point("TOPRIGHT", 15, 1.5)
-					else
-						CPoints[i]:Point("TOPLEFT", -15, 1.5)
-					end
+					CPoints[i]:Point("TOPLEFT", -15, 1.5)
 					CPoints[i]:SetVertexColor(0.69, 0.31, 0.31)
 				else
 					CPoints[i]:Point("TOP", CPoints[i-1], "BOTTOM", 1)
@@ -651,42 +647,22 @@ local function Shared(self, unit)
 			local debuffs = CreateFrame("Frame", nil, self)
 			
 			if (T.myclass == "SHAMAN" or T.myclass == "DEATHKNIGHT" or T.myclass == "PALADIN" or T.myclass == "WARLOCK") and (C["unitframes"].playerauras) and (unit == "player") then
-				if T.lowversion then
-					buffs:SetPoint("TOPLEFT", self, "TOPLEFT", -3, 34)
-				else
-					buffs:SetPoint("TOPLEFT", self, "TOPLEFT", -3, 34)
-				end
+				buffs:SetPoint("TOPLEFT", self, "TOPLEFT", -3, 34)
 			else
-				if T.lowversion then
-					buffs:SetPoint("TOPLEFT", self, "TOPLEFT", -3, 26)
-				else
-					buffs:SetPoint("TOPLEFT", self, "TOPLEFT", -3, 30)
-				end
+				buffs:SetPoint("TOPLEFT", self, "TOPLEFT", -3, 30)
 			end
-			
-			if T.lowversion then
-				buffs:SetHeight(21.5)
-				buffs:SetWidth(186)
-				buffs.size = 21.5
-				buffs.num = 8
+
+
+			buffs:SetHeight(26)
+			buffs:SetWidth(250)
+			buffs.size = 26
+			buffs.num = 9
 				
-				debuffs:SetHeight(21.5)
-				debuffs:SetWidth(186)
-				debuffs:SetPoint("BOTTOMLEFT", buffs, "TOPLEFT", 0, 2)
-				debuffs.size = 21.5	
-				debuffs.num = 24
-			else				
-				buffs:SetHeight(26)
-				buffs:SetWidth(252)
-				buffs.size = 26
-				buffs.num = 9
-				
-				debuffs:SetHeight(26)
-				debuffs:SetWidth(252)
-				debuffs:SetPoint("BOTTOMLEFT", buffs, "TOPLEFT", -2, 2)
-				debuffs.size = 26
-				debuffs.num = 27
-			end
+			debuffs:SetHeight(26)
+			debuffs:SetWidth(250)
+			debuffs:SetPoint("BOTTOMLEFT", buffs, "TOPLEFT", 2, 2)
+			debuffs.size = 26
+			debuffs.num = 27
 						
 			buffs.spacing = 2
 			buffs.initialAnchor = 'TOPLEFT'
@@ -756,17 +732,9 @@ local function Shared(self, unit)
 				castbar.icon:SetTexCoord(0.08, 0.92, 0.08, .92)
 			
 				if unit == "player" then
-					if C["unitframes"].charportrait == true then
-						castbar.button:SetPoint("LEFT", -82.5, 26.5)
-					else
-						castbar.button:SetPoint("LEFT", -46.5, 26.5)
-					end
+					castbar.button:SetPoint("LEFT", -46.5, 26.5)
 				elseif unit == "target" then
-					if C["unitframes"].charportrait == true then
-						castbar.button:SetPoint("RIGHT", 82.5, 26.5)
-					else
-						castbar.button:SetPoint("RIGHT", 46.5, 26.5)
-					end					
+					castbar.button:SetPoint("RIGHT", 46.5, 26.5)
 				end
 			end
 			
@@ -956,12 +924,12 @@ local function Shared(self, unit)
 		if C["unitframes"].totdebuffs == true and T.lowversion ~= true then
 			local debuffs = CreateFrame("Frame", nil, health)
 			debuffs:SetHeight(20)
-			debuffs:SetWidth(127)
+			debuffs:SetWidth(186)
 			debuffs.size = 20
 			debuffs.spacing = 2
 			debuffs.num = 6
 			
-			debuffs:SetPoint("TOPLEFT", health, "TOPLEFT", -0.5, 24)
+			debuffs:SetPoint("TOPLEFT", health, "TOPLEFT", -3, 24)
 			debuffs.initialAnchor = "TOPLEFT"
 			debuffs["growth-y"] = "UP"
 			debuffs.PostCreateIcon = T.PostCreateAura
@@ -1245,8 +1213,8 @@ local function Shared(self, unit)
 		
 		local castbar = CreateFrame("StatusBar", self:GetName().."CastBar", self)
 		castbar:SetPoint("LEFT", 0, 0)
-		castbar:SetPoint("RIGHT", -24, 0)
-		castbar:SetPoint("BOTTOM", 0, -25)
+		castbar:SetPoint("RIGHT", -23, 0)
+		castbar:SetPoint("BOTTOM", 0, -30)
 		
 		castbar:SetHeight(18)
 		castbar:SetStatusBarTexture(normTex)
@@ -1400,12 +1368,12 @@ local function Shared(self, unit)
 		if C["unitframes"].totdebuffs == true and T.lowversion ~= true then
 			local debuffs = CreateFrame("Frame", nil, health)
 			debuffs:SetHeight(20)
-			debuffs:SetWidth(127)
+			debuffs:SetWidth(186)
 			debuffs.size = 20
 			debuffs.spacing = 2
 			debuffs.num = 6
 			
-			debuffs:SetPoint("TOPLEFT", health, "TOPLEFT", -0.5, 24)
+			debuffs:SetPoint("TOPLEFT", health, "TOPLEFT", -2, 24)
 			debuffs.initialAnchor = "TOPLEFT"
 			debuffs["growth-y"] = "UP"
 			debuffs.PostCreateIcon = T.PostCreateAura
