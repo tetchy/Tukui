@@ -65,7 +65,7 @@ local UNIT_SPELLCAST_START = function(self, event, unit, spell)
 	castbar:SetMinMaxValues(0, max)
 	castbar:SetValue(0)
 
-	if(castbar.Text) then castbar.Text:SetText(utf8sub(text, math.floor((((32/245) * self:GetWidth()) / 10) * 6), true)) end
+	if(castbar.Text) then castbar.Text:SetText(utf8sub(text, math.floor((((32/245) * self:GetWidth()) / 9) * 6), true)) end
 	if(castbar.Icon) then castbar.Icon:SetTexture(texture) end
 	if(castbar.Time) then castbar.Time:SetText() end
 

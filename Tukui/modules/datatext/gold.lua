@@ -75,7 +75,7 @@ if C["datatext"].gold and C["datatext"].gold > 0 then
 	Stat:SetScript("OnEvent", OnEvent)
 	Stat:SetScript("OnEnter", function(self)
 		if not InCombatLockdown() then
-			GameTooltip:SetOwner(BattlenetHolder, "ANCHOR_BOTTOM", -2, -3);
+			GameTooltip:SetOwner(BattlenetHolder, "ANCHOR_BOTTOMLEFT", 0, -4)
 			GameTooltip:ClearLines()
 			GameTooltip:AddLine(L.datatext_session)
 			GameTooltip:AddDoubleLine(L.datatext_earned, formatMoney(Profit), 1, 1, 1, 1, 1, 1)

@@ -655,13 +655,13 @@ local function Shared(self, unit)
 
 			buffs:SetHeight(26)
 			buffs:SetWidth(250)
-			buffs.size = 26
+			buffs.size = 26.5
 			buffs.num = 9
 				
 			debuffs:SetHeight(26)
 			debuffs:SetWidth(250)
-			debuffs:SetPoint("BOTTOMLEFT", buffs, "TOPLEFT", 2, 2)
-			debuffs.size = 26
+			debuffs:SetPoint("BOTTOMLEFT", buffs, "TOPLEFT", 5, 2)
+			debuffs.size = 26.5
 			debuffs.num = 27
 						
 			buffs.spacing = 2
@@ -790,6 +790,7 @@ local function Shared(self, unit)
 				mhpb:SetWidth(250)
 			end
 			mhpb:SetStatusBarTexture(normTex)
+			mhpb:SetFrameLevel(3)
 			mhpb:SetStatusBarColor(0, 1, 0.5, 0.25)
 			mhpb:SetMinMaxValues(0,1)
 

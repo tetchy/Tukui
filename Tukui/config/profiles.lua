@@ -42,3 +42,25 @@ if T.myname == "Xirasis" then
 	C.merchant.autorepair = false
 	C.unitframes.showownname = false
 end
+if T.myname == "Péy" then
+	C.datatext.haste = 0
+	C.datatext.dps_text = 0
+	C.datatext.fps_ms = 4
+	C.datatext.system = 5
+	C.datatext.bags = 6
+	C.datatext.gold = 12
+	C.datatext.wowtime = 7
+	C.datatext.guild = 10
+	C.datatext.dur = 2
+	C.datatext.friends = 9
+	C.datatext.power = 14
+	C.datatext.avd = 1
+	C.datatext.currency = 11	
+	C.datatext.hit = 13
+	C.datatext.mastery = 3
+	C.datatext.battlenet = true
+	C.datatext.classcolor = true
+	C.actionbar.hotkey = true
+	C.merchant.autorepair = false
+	C.unitframes.showownname = false
+end
