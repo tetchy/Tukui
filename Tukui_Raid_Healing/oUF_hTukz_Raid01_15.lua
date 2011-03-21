@@ -105,9 +105,10 @@ local function Shared(self, unit)
 	end
 	
 	local name = health:CreateFontString(nil, "OVERLAY")
-    name:SetPoint("CENTER", health, 0, 0)
+    name:SetPoint("CENTER", health, 0, 2)
 	name:SetFont(font2, 10, "THINOUTLINE")
-	self:Tag(name, "[Tukui:getnamecolor][Tukui:nameshort]")
+	name:SetWidth(((TukuiChatBackgroundLeft:GetWidth() / 5) - 7))
+	self:Tag(name, '[Tukui:dead][Tukui:afk][Tukui:getnamecolor][Tukui:nameshort]')
 	self.Name = name
 	
     local leader = health:CreateTexture(nil, "OVERLAY")
@@ -119,7 +120,7 @@ local function Shared(self, unit)
     local LFDRole = health:CreateTexture(nil, "OVERLAY")
     LFDRole:Height(6)
     LFDRole:Width(6)
-	LFDRole:Point("TOPRIGHT", -2, -2)
+	LFDRole:Point("BOTTOMRIGHT", 0, 0)
 	LFDRole:SetTexture("Interface\\AddOns\\Tukui\\medias\\textures\\lfdicons.blp")
 	self.LFDRole = LFDRole
 	
@@ -147,8 +148,8 @@ local function Shared(self, unit)
 	end
 	
 	local ReadyCheck = health:CreateTexture(nil, "OVERLAY")
-	ReadyCheck:Height(12*T.raidscale)
-	ReadyCheck:Width(12*T.raidscale)
+	ReadyCheck:Height(20*T.raidscale)
+	ReadyCheck:Width(20*T.raidscale)
 	ReadyCheck:SetPoint('CENTER')
 	self.ReadyCheck = ReadyCheck
 	
@@ -234,12 +235,12 @@ oUF:Factory(function(self)
 	
 	local pets = {} 
 		pets[1] = oUF:Spawn('partypet1', 'oUF_TukuiPartyPet1') 
-		pets[1]:SetPoint('BOTTOMLEFT', raid, 'TOPLEFT', 0, 14*T.raidscale)
-		pets[1]:Size(76*T.raidscale, 20*T.raidscale)
+		pets[1]:SetPoint('BOTTOMLEFT', raid, 'TOPLEFT', 0, 30*T.raidscale)
+		pets[1]:Size(76, 20*T.raidscale)
 	for i =2, 4 do 
 		pets[i] = oUF:Spawn('partypet'..i, 'oUF_TukuiPartyPet'..i) 
 		pets[i]:SetPoint('LEFT', pets[i-1], 'RIGHT', 7, 0)
-		pets[i]:Size(76*T.raidscale, 20*T.raidscale)
+		pets[i]:Size(76, 20*T.raidscale)
 	end
 		
 	local RaidMove = CreateFrame("Frame")
