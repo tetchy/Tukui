@@ -8,7 +8,7 @@ ns._Headers = {}
 local T, C, L = unpack(Tukui) -- Import: T - functions, constants, variables; C - config; L - locales
 if not C["unitframes"].enable == true or C["unitframes"].gridonly == true then return end
 
-local font2 = C["media"].uffont
+local font2 = C["media"].uffontp
 local font1 = C["media"].font
 local normTex = C["media"].normTex
 
@@ -20,13 +20,13 @@ local function Shared(self, unit)
 	
 	self.menu = T.SpawnMenu
 	
-	self:SetBackdrop({bgFile = C["media"].blank, insets = {top = -T.mult, left = -T.mult, bottom = -T.mult, right = -T.mult}})
+	self:SetBackdrop({bgFile = C["media"].blank, insets = {top = -2, left = -2, bottom = -2, right = -2}})
 	self:SetBackdropColor(0.1, 0.1, 0.1)
 	
 	local health = CreateFrame('StatusBar', nil, self)
 	health:SetPoint("TOPLEFT")
 	health:SetPoint("TOPRIGHT")
-	health:Height(27*T.raidscale)
+	health:Height(40)
 	health:SetStatusBarTexture(normTex)
 	self.Health = health
 	
@@ -36,12 +36,20 @@ local function Shared(self, unit)
 	health.bg:SetTexture(0.3, 0.3, 0.3)
 	health.bg.multiplier = 0.3
 	self.Health.bg = health.bg
+	
+	-- health border
+	local healthborder = CreateFrame("Frame", nil, self)
+	healthborder:CreatePanel("Default", 1, 1, "CENTER", health, "CENTER", 0, 0)
+	healthborder:ClearAllPoints()
+	healthborder:Point("TOPLEFT", health, -2, 2)
+	healthborder:Point("BOTTOMRIGHT", health, 2, -2)
+	healthborder:SetFrameLevel(2)
+	healthborder:SetFrameStrata("MEDIUM")
 		
 	health.value = health:CreateFontString(nil, "OVERLAY")
-	health.value:SetPoint("RIGHT", health, -3, 1)
-	health.value:SetFont(font2, 12*T.raidscale, "THINOUTLINE")
+	health.value:Point("CENTER", self, "CENTER", 0, -10)
+	health.value:SetFont(font2, 10*T.raidscale, "THINOUTLINE")
 	health.value:SetTextColor(1,1,1)
-	health.value:SetShadowOffset(1, -1)
 	self.Health.value = health.value
 	
 	health.PostUpdate = T.PostUpdateHealthRaid
@@ -59,53 +67,65 @@ local function Shared(self, unit)
 		health.colorReaction = true			
 	end
 	
-	local power = CreateFrame("StatusBar", nil, self)
-	power:Height(4*T.raidscale)
-	power:Point("TOPLEFT", health, "BOTTOMLEFT", 0, -1)
-	power:Point("TOPRIGHT", health, "BOTTOMRIGHT", 0, -1)
-	power:SetStatusBarTexture(normTex)
-	self.Power = power
-	
-	power.frequentUpdates = true
-	power.colorDisconnected = true
+	if C["unitframes"].showpower == true then
+		local power = CreateFrame("StatusBar", nil, self)
+		power:Size(45, 5)
+		power:Point("CENTER", health, "BOTTOM", 0, -2)
+		power:SetFrameLevel(4)
+		--power:Point("TOPLEFT", health, "BOTTOMLEFT", 0, -1)
+		--power:SetPoint("TOPRIGHT", health, "BOTTOMRIGHT", 0, -1)
+		power:SetStatusBarTexture(C["media"].normTex)
+		self.Power = power
+		
+		power.frequentUpdates = true
+		power.colorDisconnected = true
 
-	power.bg = self.Power:CreateTexture(nil, "BORDER")
-	power.bg:SetAllPoints(power)
-	power.bg:SetTexture(normTex)
-	power.bg:SetAlpha(1)
-	power.bg.multiplier = 0.4
-	self.Power.bg = power.bg
-	
-	if C.unitframes.unicolor == true then
-		power.colorClass = true
-		power.bg.multiplier = 0.1				
-	else
-		power.colorPower = true
+		power.bg = self.Power:CreateTexture(nil, "BORDER")
+		power.bg:SetAllPoints(power)
+		power.bg:SetTexture(C["media"].normTex)
+		power.bg:SetAlpha(1)
+		power.bg.multiplier = 0.4
+		
+		--power border
+		local powerborder = CreateFrame("Frame", nil, self)
+		powerborder:CreatePanel("Default", 1, 1, "CENTER", power, "CENTER", 0, 0)
+		powerborder:ClearAllPoints()
+		powerborder:Point("TOPLEFT", power, -2, 2)
+		powerborder:Point("BOTTOMRIGHT", power, 2, -2)
+		powerborder:SetFrameLevel(4)
+		powerborder:SetFrameStrata("MEDIUM")
+		
+		self.Power.bg = power.bg
+		if C.unitframes.unicolor == true then
+			power.colorClass = true
+			power.bg.multiplier = 0.1				
+		else
+			power.colorPower = true
+		end
 	end
 	
 	local name = health:CreateFontString(nil, "OVERLAY")
-    name:SetPoint("LEFT", health, 3, 0)
-	name:SetFont(font2, 12*T.raidscale, "THINOUTLINE")
-	name:SetShadowOffset(1, -1)
-	self:Tag(name, "[Tukui:namemedium]")
+    name:SetPoint("CENTER", health, 0, 0)
+	name:SetFont(font2, 10, "THINOUTLINE")
+	self:Tag(name, "[Tukui:getnamecolor][Tukui:nameshort]")
 	self.Name = name
 	
     local leader = health:CreateTexture(nil, "OVERLAY")
-    leader:Height(12*T.raidscale)
-    leader:Width(12*T.raidscale)
+    leader:Height(12)
+    leader:Width(12)
     leader:SetPoint("TOPLEFT", 0, 6)
 	self.Leader = leader
 	
     local LFDRole = health:CreateTexture(nil, "OVERLAY")
-    LFDRole:Height(6*T.raidscale)
-    LFDRole:Width(6*T.raidscale)
+    LFDRole:Height(6)
+    LFDRole:Width(6)
 	LFDRole:Point("TOPRIGHT", -2, -2)
 	LFDRole:SetTexture("Interface\\AddOns\\Tukui\\medias\\textures\\lfdicons.blp")
 	self.LFDRole = LFDRole
 	
     local MasterLooter = health:CreateTexture(nil, "OVERLAY")
-    MasterLooter:Height(12*T.raidscale)
-    MasterLooter:Width(12*T.raidscale)
+    MasterLooter:Height(12)
+    MasterLooter:Width(12)
 	self.MasterLooter = MasterLooter
     self:RegisterEvent("PARTY_LEADER_CHANGED", T.MLAnchorUpdate)
     self:RegisterEvent("PARTY_MEMBERS_CHANGED", T.MLAnchorUpdate)
@@ -119,34 +139,29 @@ local function Shared(self, unit)
 	
 	if C["unitframes"].showsymbols == true then
 		local RaidIcon = health:CreateTexture(nil, 'OVERLAY')
-		RaidIcon:Height(18*T.raidscale)
-		RaidIcon:Width(18*T.raidscale)
-		RaidIcon:SetPoint('CENTER', self, 'TOP')
+		RaidIcon:Height(14)
+		RaidIcon:Width(14)
+		RaidIcon:SetPoint('CENTER', self, 'TOP', 0, 0)
 		RaidIcon:SetTexture("Interface\\AddOns\\Tukui\\medias\\textures\\raidicons.blp") -- thx hankthetank for texture
 		self.RaidIcon = RaidIcon
 	end
 	
-	local ReadyCheck = self.Power:CreateTexture(nil, "OVERLAY")
+	local ReadyCheck = health:CreateTexture(nil, "OVERLAY")
 	ReadyCheck:Height(12*T.raidscale)
 	ReadyCheck:Width(12*T.raidscale)
 	ReadyCheck:SetPoint('CENTER')
 	self.ReadyCheck = ReadyCheck
 	
-    local debuffs = CreateFrame('Frame', nil, self)
-    debuffs:SetPoint('LEFT', self, 'RIGHT', 4, 0)
-    debuffs:SetHeight(26)
-    debuffs:SetWidth(200)
-    debuffs.size = 26
-    debuffs.spacing = 2
-    debuffs.initialAnchor = 'LEFT'
-	debuffs.num = 5
-	debuffs.PostCreateIcon = T.PostCreateAura
-	debuffs.PostUpdateIcon = T.PostUpdateAura
-	self.Debuffs = debuffs
-	
-	self.DebuffHighlightAlpha = 1
-	self.DebuffHighlightBackdrop = true
-	self.DebuffHighlightFilter = true
+    --Debuff Highlight
+		local dbh = self.Health:CreateTexture(nil, "OVERLAY", Healthbg)
+		dbh:SetAllPoints(self)
+		dbh:SetTexture(TukuiCF["media"].normTex)
+		dbh:SetBlendMode("ADD")
+		dbh:SetVertexColor(0,0,0,0)
+		self.DebuffHighlight = dbh
+		self.DebuffHighlightFilter = true
+		self.DebuffHighlightAlpha = 0.6
+	-- end	
 	
 	--local picon = self.Health:CreateTexture(nil, 'OVERLAY')
 	--picon:SetPoint('CENTER', self.Health)
@@ -162,21 +177,20 @@ local function Shared(self, unit)
 	
 	if C["unitframes"].showsmooth == true then
 		health.Smooth = true
-		power.Smooth = true
 	end
 	
 	if C["unitframes"].healcomm then
 		local mhpb = CreateFrame('StatusBar', nil, self.Health)
 		mhpb:SetPoint('TOPLEFT', self.Health:GetStatusBarTexture(), 'TOPRIGHT', 0, 0)
 		mhpb:SetPoint('BOTTOMLEFT', self.Health:GetStatusBarTexture(), 'BOTTOMRIGHT', 0, 0)
-		mhpb:SetWidth(150*T.raidscale)
+		mhpb:SetWidth(76*T.raidscale)
 		mhpb:SetStatusBarTexture(normTex)
 		mhpb:SetStatusBarColor(0, 1, 0.5, 0.25)
 
 		local ohpb = CreateFrame('StatusBar', nil, self.Health)
 		ohpb:SetPoint('TOPLEFT', mhpb:GetStatusBarTexture(), 'TOPRIGHT', 0, 0)
 		ohpb:SetPoint('BOTTOMLEFT', mhpb:GetStatusBarTexture(), 'BOTTOMRIGHT', 0, 0)
-		ohpb:SetWidth(150*T.raidscale)
+		ohpb:SetWidth(76*T.raidscale)
 		ohpb:SetStatusBarTexture(normTex)
 		ohpb:SetStatusBarColor(0, 1, 0, 0.25)
 
@@ -200,19 +214,32 @@ oUF:Factory(function(self)
 		self:SetWidth(header:GetAttribute('initial-width'))
 		self:SetHeight(header:GetAttribute('initial-height'))
 	]],
-	'initial-width', T.Scale(150*T.raidscale),
-	'initial-height', T.Scale(32*T.raidscale),	
-	"showParty", true, "showPlayer", C["unitframes"].showplayerinparty, "showRaid", true, "groupFilter", "1,2,3,4,5,6,7,8", "groupingOrder", "1,2,3,4,5,6,7,8", "groupBy", "GROUP", "yOffset", T.Scale(-4))
-	raid:SetPoint("TOPLEFT", UIParent, "TOPLEFT", 15, -300*T.raidscale)
+	'initial-width', ((TukuiChatBackgroundLeft:GetWidth() / 5) - 7),
+	'initial-height', T.Scale(40*T.raidscale),	
+	"showParty", true, 
+	"showPlayer", C["unitframes"].showplayerinparty, 
+	"showRaid", true, 
+	"groupFilter", "1,2,3,4,5,6,7,8", 
+	"groupingOrder", "1,2,3,4,5,6,7,8", 
+	"groupBy", "GROUP", 
+	"xoffset", T.Scale(7),
+	"yOffset", T.Scale(-7),
+	"maxColumns", 5,
+	"unitsPerColumn", 5,
+	"columnSpacing", T.Scale(10),
+	"columnAnchorPoint", "BOTTOM",
+	"Point", "LEFT"
+	)
+	raid:SetPoint('BOTTOMLEFT', TukuiChatBackgroundLeft, "TOPLEFT", 2, 10*T.raidscale)
 	
 	local pets = {} 
 		pets[1] = oUF:Spawn('partypet1', 'oUF_TukuiPartyPet1') 
-		pets[1]:SetPoint('TOPLEFT', raid, 'TOPLEFT', 0, -240*T.raidscale)
-		pets[1]:Size(150*T.raidscale, 32*T.raidscale)
+		pets[1]:SetPoint('BOTTOMLEFT', raid, 'TOPLEFT', 0, 14*T.raidscale)
+		pets[1]:Size(76*T.raidscale, 20*T.raidscale)
 	for i =2, 4 do 
 		pets[i] = oUF:Spawn('partypet'..i, 'oUF_TukuiPartyPet'..i) 
-		pets[i]:SetPoint('TOP', pets[i-1], 'BOTTOM', 0, -8)
-		pets[i]:Size(150*T.raidscale, 32*T.raidscale)
+		pets[i]:SetPoint('LEFT', pets[i-1], 'RIGHT', 7, 0)
+		pets[i]:Size(76*T.raidscale, 20*T.raidscale)
 	end
 		
 	local RaidMove = CreateFrame("Frame")
@@ -228,13 +255,13 @@ oUF:Factory(function(self)
 			local numraid = GetNumRaidMembers()
 			local numparty = GetNumPartyMembers()
 			if numparty > 0 and numraid == 0 or numraid > 0 and numraid <= 5 then
-				raid:SetPoint("TOPLEFT", UIParent, "TOPLEFT", 15, -300*T.raidscale)
+				raid:SetPoint('BOTTOMLEFT', TukuiChatBackgroundLeft, "TOPLEFT", 2, 10*T.raidscale)
 				for i,v in ipairs(pets) do v:Enable() end
 			elseif numraid > 5 and numraid <= 10 then
-				raid:SetPoint('TOPLEFT', UIParent, 15, -260*T.raidscale)
+				raid:SetPoint('BOTTOMLEFT', TukuiChatBackgroundLeft, "TOPLEFT", 2, 10*T.raidscale)
 				for i,v in ipairs(pets) do v:Disable() end
 			elseif numraid > 10 and numraid <= 15 then
-				raid:SetPoint('TOPLEFT', UIParent, 16, -170*T.raidscale)
+				raid:SetPoint('BOTTOMLEFT', TukuiChatBackgroundLeft, "TOPLEFT", 2, 10*T.raidscale)
 				for i,v in ipairs(pets) do v:Disable() end
 			elseif numraid > 15 then
 				for i,v in ipairs(pets) do v:Disable() end
