@@ -130,6 +130,7 @@
 	<Script file="modules\blizzard\achievements.lua"/>
 	<Script file="core\movers.lua"/>
 	<Script file="developer\test.lua"/>
+	<Script file="modules\unitframes\plugins\oUF_hTukz_AuraWatch.lua"/>
 	<!-- Addon Skins -->
     <Include file="modules\addonskins\load_addonskins.xml"/>
 </Ui>

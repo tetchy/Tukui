@@ -117,12 +117,12 @@ local function Shared(self, unit)
     leader:SetPoint("TOPLEFT", 0, 6)
 	self.Leader = leader
 	
-    local LFDRole = health:CreateTexture(nil, "OVERLAY")
-    LFDRole:Height(6)
-    LFDRole:Width(6)
-	LFDRole:Point("BOTTOMRIGHT", 0, 0)
-	LFDRole:SetTexture("Interface\\AddOns\\Tukui\\medias\\textures\\lfdicons.blp")
-	self.LFDRole = LFDRole
+    -- local LFDRole = health:CreateTexture(nil, "OVERLAY")
+    -- LFDRole:Height(6)
+    -- LFDRole:Width(6)
+	-- LFDRole:Point("BOTTOMRIGHT", 0, 0)
+	-- LFDRole:SetTexture("Interface\\AddOns\\Tukui\\medias\\textures\\lfdicons.blp")
+	-- self.LFDRole = LFDRole
 	
     local MasterLooter = health:CreateTexture(nil, "OVERLAY")
     MasterLooter:Height(12)

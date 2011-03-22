@@ -128,8 +128,6 @@ if C["unitframes"].raidunitdebuffwatch == true then
 		ORD.MatchBySpellName = false
 
 		T.debuffids = {
-			-- Other debuff
-			67479, -- Impale
 			
 			--CATA DEBUFFS
 		--Baradin Hold
@@ -138,17 +136,44 @@ if C["unitframes"].raidunitdebuffwatch == true then
 		--Blackwing Descent
 			--Magmaw
 			91911, -- Constricting Chains
+			79589, -- ^
+			58823, -- ^
+			52696, -- ^
 			94679, -- Parasitic Infection
+			94679, -- ^
+			91913, -- ^
+			78941, -- ^
+			78097, -- ^
 			94617, -- Mangle
+			94616, -- ^
+			78412, -- ^
+			89773, -- ^
+			91912, -- ^
 			
 			--Omintron Defense System
 			79835, --Poison Soaked Shell	
+			91502, -- ^
+			91501, -- ^
+			91503, -- ^
 			91433, --Lightning Conductor
+			91431, -- ^
+			91432, -- ^
+			79888, -- ^
 			91521, --Incineration Security Measure
+			91519, -- ^
+			79023, -- ^
+			91520, -- ^
 			
 			--Maloriak
 			77699, -- Flash Freeze
+			92978, -- ^
+			92979, -- ^
+			92980, -- ^
 			77760, -- Biting Chill
+			92972, -- Consuming Flames
+			92971, -- ^
+			92973, -- ^
+			77786, -- ^
 			
 			--Atramedes
 			92423, -- Searing Flame
@@ -165,6 +190,7 @@ if C["unitframes"].raidunitdebuffwatch == true then
 			--Valiona & Theralion
 			92878, -- Blackout
 			86840, -- Devouring Flames
+			86844, -- ^
 			95639, -- Engulfing Magic
 			
 			--Halfus Wyrmbreaker
@@ -192,6 +218,9 @@ if C["unitframes"].raidunitdebuffwatch == true then
 				93122, --Toxic Spores
 				--Rohash <Lord of the East Wind>
 				93058, --Slicing Gale 
+				93056, -- ^
+				93057, -- ^
+				86182, -- ^
 			--Al'Akir
 			93260, -- Ice Storm
 			93295, -- Lightning Rod
