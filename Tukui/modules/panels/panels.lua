@@ -216,7 +216,7 @@ if C.chat.background then
 		
 	-- RIGHT TAB PANEL
 	local tabsbgright = CreateFrame("Frame", "TukuiTabsRightBackground", TukuiBar1)
-	tabsbgright:CreatePanel("Default", T.InfoLeftRightWidth -25, 23, "TOPLEFT", chatrightbg, "TOPLEFT", 6, -6)
+	tabsbgright:CreatePanel("Default", T.InfoLeftRightWidth, 23, "TOPLEFT", chatrightbg, "TOPLEFT", 6, -6)
 	tabsbgright:SetFrameLevel(2)
 	tabsbgright:SetFrameStrata("BACKGROUND")
 	tabsbgright:EnableMouse(true)
@@ -261,46 +261,74 @@ if C["datatext"].battleground == true then
 	bgframe:EnableMouse(true)
 end
 
-
 if IsAddOnLoaded("Skada") then
-	-- Go Away Skada!
 	local f=CreateFrame"Frame"
 	f:RegisterEvent("PLAYER_LOGIN")
 	f:SetScript("OnEvent", function(self)
 		local skada=_G["SkadaBarWindow"..Skada.db.profile.windows[1].name]
-		if skada:IsShown() then ChatFrame4:Hide() else ChatFrame4:Show() end
+		if skada:IsShown() then 
+			ChatFrame4:Hide() 
+		else 
+			ChatFrame4:Show() 
+		end
 		skada:HookScript("OnShow", function() ChatFrame4:Hide() end)
 		skada:HookScript("OnHide", function() ChatFrame4:Show() end)
 		self:UnregisterEvent("PLAYER_LOGIN")
 	end)
-	-- Skada Toggle Button
-	local toggleskada = CreateFrame("Frame", "TukuiSkadaToggle", UIParent)
-	local toggletext = toggleskada:CreateFontString(nil, "OVERLAY", nil)
-	toggletext:SetFont(C.media.font,C["datatext"].fontsize, "OUTLINE")
-	toggletext:SetText(hexa.."S"..hexb)
-	toggletext:SetPoint("CENTER", 2, 0.5)
-	toggleskada:CreatePanel(toggleskada, 23, 23, "TOPLEFT", TukuiTabsRightBackground, "TOPRIGHT", 2, 0)
-	toggleskada:SetFrameLevel(TukuiTabsRightBackground:GetFrameLevel())
-	toggleskada:EnableMouse(true)
-	toggleskada:SetScript("OnEnter", function(self) toggleskada:SetBackdropBorderColor(unpack(C["media"].altclasscolor)) 
+end
+
+if IsAddOnLoaded("Recount") then
+	local f=CreateFrame"Frame"
+	f:RegisterEvent("PLAYER_LOGIN")
+	f:SetScript("OnEvent", function(self)
+		if Recount.MainWindow:IsShown() then
+			ChatFrame4:Hide()
+		else 
+			ChatFrame4:Show()
+		end
+		Recount.MainWindow:HookScript("OnShow", function() ChatFrame4:Hide() end)
+		Recount.MainWindow:HookScript("OnHide", function() ChatFrame4:Show() end)
+		self:UnregisterEvent("PLAYER_LOGIN")
+	end)
+end
+-- Toggle Button
+local toggleskada = CreateFrame("Frame", "TukuiSkadaToggle", UIParent)
+local toggletext = toggleskada:CreateFontString(nil, "OVERLAY", nil)
+toggletext:SetFont(C.media.font,C["datatext"].fontsize, "OUTLINE")
+toggletext:SetText(hexa.."S"..hexb)
+toggletext:SetPoint("CENTER", 2, 0.5)
+TukuiTabsRightBackground:Point("TOPRIGHT", TukuiChatBackgroundRight, "TOPRIGHT", -31, 0)
+toggleskada:CreatePanel(toggleskada, 23, 23, "TOPLEFT", TukuiTabsRightBackground, "TOPRIGHT", 2, 0)
+toggleskada:SetFrameLevel(TukuiTabsRightBackground:GetFrameLevel())
+toggleskada:EnableMouse(true)
+toggleskada:SetScript("OnEnter", function(self) toggleskada:SetBackdropBorderColor(unpack(C["media"].altclasscolor)) 
 	GameTooltip:SetOwner(self, "ANCHOR_TOP", 0, 6)
 	GameTooltip:ClearAllPoints()
 	GameTooltip:ClearLines()
-	GameTooltip:AddLine("L: Toggle Skada")
+	GameTooltip:AddLine("L: Toggle Skada/Recount")
 	GameTooltip:AddLine("R: Toggle RBR")
 	GameTooltip:Show()
-	end)
-	toggleskada:SetScript("OnLeave", function(self) toggleskada:SetBackdropBorderColor(unpack(C["media"].bordercolor)) 
-	GameTooltip:Hide() end)
-	toggleskada:SetScript("OnMouseDown", function(self, btn)
-		if btn == "LeftButton" then
-			Skada:ToggleWindow() end
-		if btn == "RightButton" then
-			if RaidBuffReminder:IsShown() then
-				RaidBuffReminder:Hide()
-			else
-				RaidBuffReminder:Show()
-			end 
+end)
+toggleskada:SetScript("OnLeave", function(self) toggleskada:SetBackdropBorderColor(unpack(C["media"].bordercolor)) 
+	GameTooltip:Hide() 
+end)
+toggleskada:SetScript("OnMouseDown", function(self, btn)
+	if btn == "LeftButton" then
+		if IsAddOnLoaded("Skada") then
+			Skada:ToggleWindow()
+		elseif IsAddOnLoaded("Recount") then
+			if Recount.MainWindow:IsShown() then
+				Recount.MainWindow:Hide() 
+			else 
+				Recount.MainWindow:Show()
+				Recount:RefreshMainWindow() 
+			end
 		end
-	end)
-end
+	elseif btn == "RightButton" then
+		if RaidBuffReminder:IsShown() then
+			RaidBuffReminder:Hide()
+		else
+			RaidBuffReminder:Show()
+		end 
+	end
+end)
