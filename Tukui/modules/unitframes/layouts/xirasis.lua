@@ -1039,7 +1039,7 @@ local function Shared(self, unit)
             portrait.PostUpdate = function(self) self:SetAlpha(0) self:SetAlpha(0.20) 
 		end 
 		if C["unitframes"].unicolor == true then
-			portrait.PostUpdate = function(self) self:SetAlpha(0) self:SetAlpha(0.20) end
+			portrait.PostUpdate = function(self) self:SetAlpha(0) self:SetAlpha(0.10) end
 		end
             portrait:SetAllPoints(health)
 			portrait:SetFrameLevel(3)
@@ -1723,7 +1723,7 @@ tot:Size(186, 18)
 
 -- pet
 local pet = oUF:Spawn('pet', "TukuiPet")
-pet:SetPoint("TOPLEFT", TukuiPlayer, "BOTTOMLEFT", 0, -15)
+pet:SetPoint("TOP", TukuiTargetTarget, "BOTTOM", 0, -15)
 pet:Size(120, 18)
 
 if C.arena.unitframes then
