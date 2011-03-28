@@ -40,7 +40,7 @@ local function SetTooltip(self)
 
 	local bars = unit == 'pet' and 6 or 20
 
-	GameTooltip:SetOwner(self, 'ANCHOR_BOTTOM', 0, -5)
+	GameTooltip:SetOwner(TukuiInfoMiddle, "ANCHOR_TOPRIGHT", 0, 10);
 	GameTooltip:AddLine(string.format(XP..": %d / %d (%d%% - %d/%d)", min, max, min/max * 100, bars - (bars * (max - min) / max), bars))
 	GameTooltip:AddLine(string.format(LEVEL_ABBR..": %d (%d%% - %d/%d)", max - min, (max - min) / max * 100, 1 + bars * (max - min) / max, bars))
 

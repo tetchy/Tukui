@@ -110,7 +110,8 @@ C["datatext"] = {
 	["hit"] = 13,
 	["mastery"] = 0,
 	["micromenu"] = 0,
-	["battlenet"] = true,
+	["battlenet"] = true,								-- toggles battlenet panels
+	["location"] = true,								-- toggles location datatext panels
 
 	-- Color Datatext
 	["classcolor"] = true,                   		    -- classcolored datatexts
