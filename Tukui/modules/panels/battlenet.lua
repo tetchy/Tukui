@@ -27,7 +27,7 @@ if C["datatext"].battlenet == true then
 
 	-- Frame Holder
 	local battleframe = CreateFrame("Frame", "BattlenetHolder", UIParent)
-	battleframe:CreatePanel(battleframe, 200, 95, "TOPLEFT", battlenet, "BOTTOMLEFT", 0, -1)
+	battleframe:CreatePanel(battleframe, 200, 93, "TOPLEFT", battlenet, "BOTTOMLEFT", 0, -1)
 	battleframe:SetFrameLevel(1)
 	battleframe:SetFrameStrata("BACKGROUND")
 	battleframe:SetBackdropColor(unpack(C["media"].backdropcolor))
@@ -49,13 +49,13 @@ if C["datatext"].battlenet == true then
 	-- Battlenet Datatext placeholder
 	-- Top
 	local battletopstat = CreateFrame("Frame", "BattleStatTop", battleframe)
-	battletopstat:CreatePanel(battletopstat, (battleframe:GetWidth() -49), ((bimage:GetHeight() / 2)), "TOPLEFT", bimage, "TOPRIGHT", 0, 0)
+	battletopstat:CreatePanel(battletopstat, (battleframe:GetWidth() -49), ((bimage:GetHeight() / 2)), "TOPLEFT", bimage, "TOPRIGHT", 1, 0)
 	battletopstat:SetFrameLevel(2) 
 	battletopstat:SetFrameStrata("BACKGROUND")
 
 	-- Bottom
 	local battlebottomstat = CreateFrame("Frame", "BattleStatBottom", battleframe)
-	battlebottomstat:CreatePanel(battlebottomstat, (battleframe:GetWidth() -49), ((bimage:GetHeight() / 2)), "BOTTOMLEFT", bimage, "BOTTOMRIGHT", 0, 0)
+	battlebottomstat:CreatePanel(battlebottomstat, (battleframe:GetWidth() -49), ((bimage:GetHeight() / 2)), "BOTTOMLEFT", bimage, "BOTTOMRIGHT", 1, 0)
 	battlebottomstat:SetFrameLevel(2)
 	battlebottomstat:SetFrameStrata("BACKGROUND")
 	
@@ -75,13 +75,13 @@ if C["datatext"].battlenet == true then
 	-- Currency Datatext placeholder
 	-- Top
 	local currencytopstat = CreateFrame("Frame", "CurrencyStatTop", battleframe)
-	currencytopstat:CreatePanel(currencytopstat, (battleframe:GetWidth() -49), ((gimage:GetHeight() / 2)), "TOPLEFT", gimage, "TOPRIGHT", 0, 0)
+	currencytopstat:CreatePanel(currencytopstat, (battleframe:GetWidth() -49), ((gimage:GetHeight() / 2)), "TOPLEFT", gimage, "TOPRIGHT", 1, 0)
 	currencytopstat:SetFrameLevel(2)
 	currencytopstat:SetFrameStrata("BACKGROUND")
 	
 	-- Bottom
 	local currencybottomstat = CreateFrame("Frame", "CurrencyStatBottom", battleframe)
-	currencybottomstat:CreatePanel(currencybottomstat, (battleframe:GetWidth() -49), ((gimage:GetHeight() / 2)), "BOTTOMLEFT", gimage, "BOTTOMRIGHT", 0, 0)
+	currencybottomstat:CreatePanel(currencybottomstat, (battleframe:GetWidth() -49), ((gimage:GetHeight() / 2)), "BOTTOMLEFT", gimage, "BOTTOMRIGHT", 1, 0)
 	currencybottomstat:SetFrameLevel(2)
 	currencybottomstat:SetFrameStrata("BACKGROUND")
 	

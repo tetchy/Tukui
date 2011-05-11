@@ -2,10 +2,23 @@ local T, C, L = unpack(select(2, ...)) -- Import: T - functions, constants, vari
 
 local TukuiBar1 = CreateFrame("Frame", "TukuiBar1", UIParent, "SecureHandlerStateTemplate")
 TukuiBar1:CreatePanel("Default", 1, 1, "BOTTOM", UIParent, "BOTTOM", 0, 48)
-TukuiBar1:SetWidth((T.buttonsize * 12) + (T.buttonspacing * 13))
-TukuiBar1:SetHeight((T.buttonsize * 2) + (T.buttonspacing * 3))
+TukuiBar1:SetWidth(414)
+TukuiBar1:SetHeight(72)
 TukuiBar1:SetFrameStrata("BACKGROUND")
 TukuiBar1:SetFrameLevel(1)
+
+local TukuiForteBar = CreateFrame("Frame", "TukuiForteBar", UIParent)
+TukuiForteBar:CreatePanel("Default", 1, 1, "BOTTOM", TukuiBar1, "TOP", 0, 4)
+TukuiForteBar:SetWidth(414)
+TukuiForteBar:SetHeight(18)
+TukuiForteBar:SetFrameStrata("BACKGROUND")
+TukuiForteBar:SetFrameLevel(2)
+TukuiForteBar:SetAlpha(0)
+if T.lowversion then
+	TukuiForteBar:SetAlpha(0)
+else
+	TukuiForteBar:SetAlpha(1)
+end
 
 local TukuiBar2 = CreateFrame("Frame", "TukuiBar2", UIParent)
 TukuiBar2:CreatePanel("Default", 1, 1, "BOTTOMRIGHT", TukuiBar1, "BOTTOMLEFT", -6, 0)
@@ -162,7 +175,7 @@ imiddleleftr:SetFrameStrata("BACKGROUND")
 
 -- INFO MIDDLE (FOR STATS)
 local imiddle = CreateFrame("Frame", "TukuiInfoMiddle", TukuiBar1)
-imiddle:CreatePanel("Default", (TukuiBar1:GetWidth() * 0.5), 17, "TOP", TukuiBar1, "BOTTOM", 0, -7)
+imiddle:CreatePanel("Default", (TukuiBar1:GetWidth() * 0.5), 23, "TOP", TukuiBar1, "BOTTOM", 0, -4)
 imiddle:SetFrameLevel(2)
 imiddle:SetFrameStrata("BACKGROUND")
 
@@ -185,9 +198,9 @@ bbar:CreatePanel(bbar, (GetScreenWidth() * 1) * 2, 20, "BOTTOM", UIParent, "BOTT
 bbar:SetFrameLevel(0)
 
 -- TOP VIEWPORT
-local tbar = CreateFrame("Frame", "TukuiTopBar", UIParent)
-tbar:CreatePanel(tbar, (GetScreenWidth() * 1) * 2, 20, "TOP", UIParent, "TOP", 0, TukuiDB.Scale(2))
-tbar:SetFrameLevel(0)
+--local tbar = CreateFrame("Frame", "TukuiTopBar", UIParent)
+--tbar:CreatePanel(tbar, (GetScreenWidth() * 1) * 2, 20, "TOP", UIParent, "TOP", 0, TukuiDB.Scale(2))
+--tbar:SetFrameLevel(0)
 
 if C.chat.background then
 	-- Alpha horizontal lines because all panels is dependent on this frame.

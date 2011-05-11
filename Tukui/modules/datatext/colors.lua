@@ -1,6 +1,6 @@
 -- Color system for Hydra datatexts
 local T, C, L = unpack(select(2, ...))
-local ccolor = RAID_CLASS_COLORS[T.myclass]
+local ccolor = CUSTOM_CLASS_COLORS[T.myclass]
 hexa, hexb = C["datatext"].color, "|r"
 
 if C["datatext"].classcolor then

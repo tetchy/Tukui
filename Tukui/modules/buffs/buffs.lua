@@ -40,11 +40,11 @@ local function UpdateWeapons(button, slot, active, expiration)
 		button.texture:SetAllPoints()
 		
 		button.time = button:CreateFontString(nil, "ARTWORK")
-		button.time:SetPoint("BOTTOM", 0, -17)
-		button.time:SetFont(C.media.font, 12, "OUTLINE")
+		button.time:SetPoint("BOTTOM", 0, -12)
+		button.time:SetFont(C.media.font, 14, "OUTLINE")
 				
 		button.bg = CreateFrame("Frame", nil, button)
-		button.bg:CreatePanel("Default", 30, 30, "CENTER", button, "CENTER", 0, 0)
+		button.bg:CreatePanel("Default", 40, 40, "CENTER", button, "CENTER", 0, 0)
 		button.bg:SetFrameLevel(button:GetFrameLevel() - 1)
 		button.bg:SetFrameStrata(button:GetFrameStrata())
 		button.bg:SetAlpha(0)
@@ -76,13 +76,13 @@ local function UpdateAuras(header, button, weapon)
 		button.count:SetFont(C.media.font, 12, "OUTLINE")
 
 		button.time = button:CreateFontString(nil, "ARTWORK")
-		button.time:SetPoint("BOTTOM", 0, -17)
-		button.time:SetFont(C.media.font, 12, "OUTLINE")
+		button.time:SetPoint("BOTTOM", 0, -12)
+		button.time:SetFont(C.media.font, 14, "OUTLINE")
 
 		button:SetScript("OnUpdate", UpdateTime)
 		
 		button.bg = CreateFrame("Frame", nil, button)
-		button.bg:CreatePanel("Default", 30, 30, "CENTER", button, "CENTER", 0, 0)
+		button.bg:CreatePanel("Default", 40, 40, "CENTER", button, "CENTER", 0, 0)
 		button.bg:SetFrameLevel(button:GetFrameLevel() - 1)
 		button.bg:SetFrameStrata(button:GetFrameStrata())
 	end
@@ -154,9 +154,9 @@ local function CreateAuraHeader(filter, ...)
 	header:SetAttribute("point", "TOPRIGHT")
 	header:SetAttribute("minWidth", 300)
 	header:SetAttribute("minHeight", 94)
-	header:SetAttribute("xOffset", -36)
+	header:SetAttribute("xOffset", -42)
 	header:SetAttribute("wrapYOffset", -68)
-	header:SetAttribute("wrapAfter", 10)
+	header:SetAttribute("wrapAfter", 16)
 	header:SetAttribute("maxWraps", 2)
 	
 	-- look for weapons buffs

@@ -10,7 +10,7 @@ local SetFont = function(obj, font, size, style, r, g, b, sr, sg, sb, sox, soy)
 end
 
 local FixTitleFont = function()
-	for _,butt in pairs(PlayerTitlePickerScrollFrame.buttons) do
+	for _,butt in pairs(PaperDollTitlesPane.buttons) do
 		butt.text:SetFontObject(GameFontHighlightSmallLeft)
 	end
 end
@@ -18,7 +18,7 @@ end
 TukuiFonts:RegisterEvent("ADDON_LOADED")
 TukuiFonts:SetScript("OnEvent", function(self, event, addon)
 	if addon ~= "Tukui" then return end
-	
+
 	local NORMAL     = C.media.font
 	local COMBAT     = C.media.dmgfont
 	local NUMBER     = C.media.font
@@ -33,7 +33,7 @@ TukuiFonts:SetScript("OnEvent", function(self, event, addon)
 		SetCVar("PetMeleeDamage",0)
 		SetCVar("CombatDamage",0)
 		SetCVar("CombatHealing",0)
-		
+
 		-- set an invisible font for xp, honor kill, etc
 		local INVISIBLE = [=[Interface\Addons\Tukui\medias\fonts\invisible_font.ttf]=]
 		COMBAT = INVISIBLE
@@ -78,7 +78,7 @@ TukuiFonts:SetScript("OnEvent", function(self, event, addon)
 	SetFont(PVPInfoTextString,                  NORMAL, 22, "THINOUTLINE")
 	SetFont(PVPArenaTextString,                 NORMAL, 22, "THINOUTLINE")
 
-	hooksecurefunc("PlayerTitleFrame_UpdateTitles", FixTitleFont)
+	hooksecurefunc("PaperDollTitlesPane_Update", FixTitleFont)
 	FixTitleFont()
 
 	SetFont = nil

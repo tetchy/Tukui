@@ -26,7 +26,7 @@ if (IsAddOnLoaded("Prat") or IsAddOnLoaded("Chatter")) then
 	C["chat"].enable = false
 end
 
-if (IsAddOnLoaded("Quartz") or IsAddOnLoaded("AzCastBar") or IsAddOnLoaded("eCastingBar")) then
+if (IsAddOnLoaded("Quartz") or IsAddOnLoaded("AzCastBar") or IsAddOnLoaded("eCastingBar") or IsAddOnLoaded("Gnosis")) then
 	C["unitframes"].unitcastbar = false
 end
 

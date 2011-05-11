@@ -26,7 +26,7 @@ local function Shared(self, unit)
 	local health = CreateFrame('StatusBar', nil, self)
 	health:SetPoint("TOPLEFT")
 	health:SetPoint("TOPRIGHT")
-	health:Height(40)
+	health:Height(36)
 	health:SetStatusBarTexture(normTex)
 	self.Health = health
 	
@@ -97,7 +97,8 @@ local function Shared(self, unit)
 		
 		self.Power.bg = power.bg
 		if C.unitframes.unicolor == true then
-			power.colorClass = true
+			power.colorClass = false
+			power.colorPower = true
 			power.bg.multiplier = 0.1				
 		else
 			power.colorPower = true
@@ -117,12 +118,12 @@ local function Shared(self, unit)
     leader:SetPoint("TOPLEFT", 0, 6)
 	self.Leader = leader
 	
-    -- local LFDRole = health:CreateTexture(nil, "OVERLAY")
-    -- LFDRole:Height(6)
-    -- LFDRole:Width(6)
-	-- LFDRole:Point("BOTTOMRIGHT", 0, 0)
-	-- LFDRole:SetTexture("Interface\\AddOns\\Tukui\\medias\\textures\\lfdicons.blp")
-	-- self.LFDRole = LFDRole
+     local LFDRole = health:CreateTexture(nil, "OVERLAY")
+     LFDRole:Height(6)
+     LFDRole:Width(6)
+	 LFDRole:Point("BOTTOMRIGHT", 0, 0)
+	 LFDRole:SetTexture("Interface\\AddOns\\Tukui\\medias\\textures\\lfdicons.blp")
+	 self.LFDRole = LFDRole
 	
     local MasterLooter = health:CreateTexture(nil, "OVERLAY")
     MasterLooter:Height(12)
@@ -257,7 +258,7 @@ oUF:Factory(function(self)
 		self:SetHeight(header:GetAttribute('initial-height'))
 	]],
 	'initial-width', ((TukuiChatBackgroundLeft:GetWidth() / 5) - 7),
-	'initial-height', T.Scale(40*T.raidscale),	
+	'initial-height', T.Scale(36*T.raidscale),	
 	"showParty", true, 
 	"showPlayer", C["unitframes"].showplayerinparty, 
 	"showRaid", true, 

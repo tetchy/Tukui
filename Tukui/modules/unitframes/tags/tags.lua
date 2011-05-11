@@ -36,7 +36,7 @@ oUF.Tags['Tukui:health'] = function(unit)
 	elseif(unit == 'target' and UnitCanAttack('player', unit)) then
 		return ('%s (%d|cff0090ff%%|r)'):format(ShortenValue(min), min / max * 100)
 	elseif(unit == 'player' and min ~= max) then
-		return ('|cffff8080%d|r %d|cff0090ff%%|r'):format(min - max, min / max * 100)
+		return ('|cffff8080%d|r %d|cff0090ff%%|r'):format(ShortenValue(min) - ShortenValue(max), min / max * 100)
 	elseif(min ~= max) then
 		return ('%s |cff0090ff/|r %s'):format(ShortenValue(min), ShortenValue(max))
 	else
@@ -117,10 +117,7 @@ end
 oUF.TagEvents['Tukui:getnamecolor'] = 'UNIT_POWER'
 oUF.Tags['Tukui:getnamecolor'] = function(unit)
 	local reaction = UnitReaction(unit, 'player')
-	if (unit == 'pet' and SPELL_POWER_HAPPINESS and GetPetHappiness()) then
-		local c = T.oUF_colors.happiness[GetPetHappiness()]
-		return string.format('|cff%02x%02x%02x', c[1] * 255, c[2] * 255, c[3] * 255)
-	elseif (UnitIsPlayer(unit)) then
+	if (UnitIsPlayer(unit)) then
 		return _TAGS['raidcolor'](unit)
 	elseif (reaction) then
 		local c = T.oUF_colors.reaction[reaction]

@@ -1,7 +1,7 @@
 local T, C, L = unpack(select(2, ...)) -- Import: T - functions, constants, variables; C - config; L - locales
 --[[
 		this is an edited version of teksloot
-		all credits of this mod goes to tekhub
+		all credits of this mod goes to tekkub
 --]]
 
 if C["loot"].rolllootframe ~= true then return end

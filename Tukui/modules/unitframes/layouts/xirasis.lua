@@ -22,7 +22,7 @@ local font2 = C["media"].font
 local normTex = C["media"].normTex
 local glowTex = C["media"].glowTex
 local bubbleTex = C["media"].bubbleTex
-local fontsize = 10
+local fontsize = 12
 
 local backdrop = {
 	bgFile = C["media"].blank,
@@ -172,8 +172,9 @@ local function Shared(self, unit)
 		end
 		
 		if C["unitframes"].unicolor == true then
-			power.colorTapping = true
-			power.colorClass = true
+			power.colorTapping = false
+			power.colorClass = false
+			power.colorPower = true
 			powerBG.multiplier = 0.1				
 		else
 			power.colorPower = true
@@ -620,7 +621,7 @@ local function Shared(self, unit)
 			self.Name = Name
 			
 			-- combo points on target
-			local CPoints = {}
+			--[[local CPoints = {}
 			CPoints.unit = PlayerFrame.unit
 			for i = 1, 5 do
 				CPoints[i] = self:CreateTexture(nil, "OVERLAY")
@@ -638,7 +639,7 @@ local function Shared(self, unit)
 			CPoints[3]:SetVertexColor(0.65, 0.63, 0.35)
 			CPoints[4]:SetVertexColor(0.65, 0.63, 0.35)
 			CPoints[5]:SetVertexColor(0.33, 0.59, 0.33)
-			self.CPoints = CPoints
+			self.CPoints = CPoints]]--
 		end
 		
 		-- buff stuff
@@ -647,9 +648,9 @@ local function Shared(self, unit)
 			local debuffs = CreateFrame("Frame", nil, self)
 			
 			if (T.myclass == "SHAMAN" or T.myclass == "DEATHKNIGHT" or T.myclass == "PALADIN" or T.myclass == "WARLOCK") and (C["unitframes"].playerauras) and (unit == "player") then
-				buffs:SetPoint("TOPLEFT", self, "TOPLEFT", -3, 34)
+				buffs:SetPoint("TOPLEFT", self, "TOPLEFT", -2, 34)
 			else
-				buffs:SetPoint("TOPLEFT", self, "TOPLEFT", -3, 30)
+				buffs:SetPoint("TOPLEFT", self, "TOPLEFT", -2, 30)
 			end
 
 
@@ -875,10 +876,10 @@ local function Shared(self, unit)
 		powerborder:SetFrameLevel(4)
 		powerborder:SetFrameStrata("MEDIUM")
 		
-		power.value = T.SetFontString(health, font1, fontsize, 'THINOUTLINE')
-		power.value:Point("LEFT", health, "LEFT", 4, 0)
-		power.PreUpdate = T.PreUpdatePower
-		power.PostUpdate = T.PostUpdatePower
+		--health.value = T.SetFontString(health, font1, fontsize, 'THINOUTLINE')
+		--health.value:Point("LEFT", health, "LEFT", 4, 0)
+		--health.PreUpdate = T.PreUpdateHealth
+		--health.PostUpdate = T.PostUpdateHealth
 				
 		self.Power = power
 		self.Power.bg = powerBG
@@ -891,8 +892,9 @@ local function Shared(self, unit)
 		end
 		
 		if C["unitframes"].unicolor == true then
-			power.colorTapping = true
-			power.colorClass = true
+			power.colorTapping = f
+			power.colorClass = false
+			power.colorPower = true
 			powerBG.multiplier = 0.1				
 		else
 			power.colorPower = true
@@ -900,13 +902,13 @@ local function Shared(self, unit)
 		
 		-- Unit Name
 		local Name = health:CreateFontString(nil, "OVERLAY")
-		Name:SetPoint("RIGHT", health, "RIGHT", -4, 0)
-		Name:SetJustifyH("RIGHT")
+		Name:SetPoint("CENTER", health, "CENTER", 0, 1)
+		Name:SetJustifyH("CENTER")
 		Name:SetFont(font1, fontsize, 'THINOUTLINE')
 		Name:SetShadowColor(0, 0, 0)
 		Name:SetShadowOffset(1.25, -1.25)
 		Name.frequentUpdates = 0.2
-		self:Tag(Name, '[Tukui:getnamecolor][Tukui:namemedium]')
+		self:Tag(Name, '[Tukui:diffcolor][level] [shortclassification][Tukui:getnamecolor][Tukui:namemedium]')
 		self.Name = Name
 		
 		-- portraits
@@ -930,9 +932,9 @@ local function Shared(self, unit)
 			debuffs.spacing = 2
 			debuffs.num = 6
 			
-			debuffs:SetPoint("TOPLEFT", health, "TOPLEFT", -3, 24)
+			debuffs:SetPoint("TOPLEFT", health, "BOTTOMLEFT", -1, -7)
 			debuffs.initialAnchor = "TOPLEFT"
-			debuffs["growth-y"] = "UP"
+			debuffs["growth-y"] = "DOWN"
 			debuffs.PostCreateIcon = T.PostCreateAura
 			debuffs.PostUpdateIcon = T.PostUpdateAura
 			self.Debuffs = debuffs

@@ -17,10 +17,10 @@ local ItemRefTooltip = ItemRefTooltip
 local linkTypes = {item = true, enchant = true, spell = true, quest = true, unit = true, talent = true, achievement = true, glyph = true}
 
 local classification = {
-	worldboss = "|cffAF5050Boss|r",
-	rareelite = "|cffAF5050+ Rare|r",
+	worldboss = "|cffAF5050B|r",
+	rareelite = "|cffAF5050+ R|r",
 	elite = "|cffAF5050+|r",
-	rare = "|cffAF5050Rare|r",
+	rare = "|cffAF5050R|r",
 }
 
 local NeedBackdropBorderRefresh = true
@@ -130,7 +130,7 @@ end
 local function GetColor(unit)
 	if(UnitIsPlayer(unit) and not UnitHasVehicleUI(unit)) then
 		local _, class = UnitClass(unit)
-		local color = RAID_CLASS_COLORS[class]
+		local color = CUSTOM_CLASS_COLORS[class]
 		if not color then return end -- sometime unit too far away return nil for color :(
 		local r,g,b = color.r, color.g, color.b
 		return Hex(color), r, g, b	
@@ -273,7 +273,7 @@ GameTooltip:HookScript("OnTooltipSetUnit", function(self)
 
 		local offset = 2
 		if guild then
-			_G["GameTooltipTextLeft2"]:SetFormattedText("%s", IsInGuild() and GetGuildInfo("player") == guild and "|cff0090ff"..guild.."|r" or "|cff00ff10"..guild.."|r")
+			_G["GameTooltipTextLeft2"]:SetFormattedText("%s", IsInGuild() and GetGuildInfo("player") == guild and "|cff0090ff<"..guild..">|r" or "|cff00ff10<"..guild..">|r")
 			offset = offset + 1
 		end
 

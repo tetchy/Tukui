@@ -15,12 +15,34 @@ local type = type
 -- function to rename channel and other stuff
 local AddMessage = function(self, text, ...)
 	if(type(text) == "string") then
-		text = text:gsub('|h%[(%d+)%. .-%]|h', '|h[%1]|h')
+		text = text:gsub("%[Guild%]", "G")
+		--text = text:gsub("%[Darnassian%]", "|cffb739b3Darnassian|r")
+		--text = text:gsub("%[Draenei%]", "|cff7c479eDraenei|r")
+		--text = text:gsub("%[Orcish%]", "|cff284e85Orcish|r")
+		--text = text:gsub("%[Dwarven%]", "|cff70bda2Dwarven|r")
+		--text = text:gsub("%[Gnomish%]", "|cff49356fGnomish|r")
+		text = text:gsub("%[Party%]", "P")
+		text = text:gsub("%[Party Leader%]", "P")
+		text = text:gsub("%[Dungeon Guide%]", "P")
+		text = text:gsub("%[Raid%]", "R")
+		text = text:gsub("%[Raid Leader%]", "RL")
+		text = text:gsub("%[Raid Warning%]", "RW")
+		text = text:gsub("%[Officer%]", "O")
+		text = text:gsub("%[Battleground%]", "BG")
+		text = text:gsub("%[Battleground Leader%]", "BL")
+		text = text:gsub("%[(%d+)%..-%]", "%1")
+		text = text:gsub("(|Hplayer.*|h) whispers", "F %1")
+		text = text:gsub("To (|Hplayer.*|h)", "T %1")
+		text = text:gsub("(|Hplayer.*|h) says", "%1")
+		text = text:gsub("(|Hplayer.*|h) yells", "%1")
+		text = text:gsub("(|Hplayer.*|h)", "%1")
+		text = text:gsub('(|Hplayer.+|h) has earned the achievement (.+)!', '%1 ! %2')
+		text = text:gsub("|H(.-)|h%[(.-)%]|h", "|H%1|h%2|h") -- Remove brackets around names
 	end
 	return origs[self](self, text, ...)
 end
 
--- localize this later k tukz? DON'T FORGET!
+--[[ localize this later k tukz? DON'T FORGET!
 _G.CHAT_BATTLEGROUND_GET = "|Hchannel:Battleground|h"..L.chat_BATTLEGROUND_GET.."|h %s:\32"
 _G.CHAT_BATTLEGROUND_LEADER_GET = "|Hchannel:Battleground|h"..L.chat_BATTLEGROUND_LEADER_GET.."|h %s:\32"
 _G.CHAT_BN_WHISPER_GET = L.chat_BN_WHISPER_GET.." %s:\32"
@@ -42,7 +64,7 @@ _G.CHAT_FLAG_GM = "|cff4154F5"..L.chat_FLAG_GM.."|r "
  
 _G.ERR_FRIEND_ONLINE_SS = "|Hplayer:%s|h[%s]|h "..L.chat_ERR_FRIEND_ONLINE_SS.."!"
 _G.ERR_FRIEND_OFFLINE_S = "%s "..L.chat_ERR_FRIEND_OFFLINE_S.."!"
-
+--]]
 -- Hide friends micro button (added in 3.3.5)
 FriendsMicroButton:Kill()
 

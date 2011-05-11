@@ -12,7 +12,7 @@ C["unitframes"] = {
 	-- general options
 	["enable"] = true,                                  -- do i really need to explain this?
 	["enemyhcolor"] = false,                            -- enemy target (players) color by hostility, very useful for healer.
-	["unitcastbar"] = true,                             -- enable tukui castbar
+	["unitcastbar"] = false,                             -- enable tukui castbar
 	["cblatency"] = true,                     			-- enable castbar latency
 	["cbicons"] = true,                                 -- enable icons on castbar
 	["auratimer"] = true,                               -- enable timers on buffs/debuffs
@@ -51,7 +51,7 @@ C["unitframes"] = {
 	["showboss"] = true,                                -- enable boss unit frames for PVELOL encounters.
 
 	-- priest only plugin
-	["weakenedsoulbar"] = true,                         -- show weakened soul bar
+	["weakenedsoulbar"] = false,                         -- show weakened soul bar
 	
 	-- class bar
 	["classbar"] = true,                                -- enable tukui classbar over player unit
@@ -62,7 +62,7 @@ C["arena"] = {
 }
 
 C["actionbar"] = {
-	["enable"] = true,                                  -- enable tukui action bars
+	["enable"] = false,                                  -- enable tukui action bars
 	["hotkey"] = true,                              	-- enable hotkey display because it was a lot requested
 	["hideshapeshift"] = false,                         -- hide shapeshift or totembar because it was a lot requested.
 	["showgrid"] = true,                                -- show grid on empty button
@@ -93,25 +93,25 @@ C["cooldown"] = {
 C["datatext"] = {
 	["fps_ms"] = 4,                                     -- show fps and ms on panels
 	["system"] = 5,                                     -- show total memory and others systems infos on panels
-	["bags"] = 6,                                       -- show space used in bags on panels
+	["bags"] = 0,                                       -- show space used in bags on panels
 	["gold"] = 12,                                      -- show your current gold on panels
 	["wowtime"] = 7,                                    -- show time on panels
 	["guild"] = 10,                                     -- show number on guildmate connected on panels
 	["dur"] = 2,                                        -- show your equipment durability on panels.
 	["friends"] = 9,                                    -- show number of friends connected.
-	["dps_text"] = 3,                                   -- show a dps meter on panels
+	["dps_text"] = 0,                                   -- show a dps meter on panels
 	["hps_text"] = 0,                                   -- show a heal meter on panels
-	["power"] = 14,                                     -- show your attackpower/spellpower/healpower/rangedattackpower whatever stat is higher gets displayed
-	["haste"] = 1,                                      -- show your haste rating on panels.
+	["power"] = 13,                                     -- show your attackpower/spellpower/healpower/rangedattackpower whatever stat is higher gets displayed
+	["haste"] = 0,                                      -- show your haste rating on panels.
 	["crit"] = 0,                                       -- show your crit rating on panels.
 	["avd"] = 0,                                        -- show your current avoidance against the level of the mob your targeting
 	["armor"] = 0,                                      -- show your armor value against the level mob you are currently targeting
 	["currency"] = 11,                                  -- show your tracked currency on panels
-	["hit"] = 13,
+	["hit"] = 0,
 	["mastery"] = 0,
-	["micromenu"] = 0,
+	["micromenu"] = 6,
 	["battlenet"] = true,								-- toggles battlenet panels
-	["location"] = true,								-- toggles location datatext panels
+	["location"] = false,								-- toggles location datatext panels
 
 	-- Color Datatext
 	["classcolor"] = true,                   		    -- classcolored datatexts
@@ -130,7 +130,7 @@ C["chat"] = {
 }
 
 C["nameplate"] = {
-	["enable"] = true,                                  -- enable nice skinned nameplates that fit into tukui
+	["enable"] = false,                                  -- enable nice skinned nameplates that fit into tukui
 	["showhealth"] = false,				                -- show health text on nameplate
 	["enhancethreat"] = true,			                -- threat features based on if your a tank or not
 	["overlap"] = false,				                -- allow nameplates to overlap
@@ -170,9 +170,18 @@ C["buffreminder"] = {
 	["sound"] = true,                                   -- enable warning sound notification for reminder.
 }
 
+C["broker_datatext"] = {
+        ["Broker_MicroMenu"] = 0,
+        ["BugSack"] = 0,
+		["Skada"] = 14,
+		["Panda"] = 1,
+		["Archy"] = 3,
+}
+
 C["skin"] = {                        					--Skin addons by Darth Android
     ["recount"] = false,
     ["skada"] = true,
     ["omen"] = false,
     ["kle"] = false,
+	["modfontsize"] = 12,                            -- set fontsize on addons skinned by Tukui since their ingame settigs are overridden
 }

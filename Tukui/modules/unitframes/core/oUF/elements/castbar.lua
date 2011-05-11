@@ -11,36 +11,6 @@ local GetTime = GetTime
 local UnitCastingInfo = UnitCastingInfo
 local UnitChannelInfo = UnitChannelInfo
 
-local utf8sub = function(string, i, dots)
-	if not string then return end
-	local bytes = string:len()
-	if (bytes <= i) then
-		return string
-	else
-		local len, pos = 0, 1
-		while(pos <= bytes) do
-			len = len + 1
-			local c = string:byte(pos)
-			if (c > 0 and c <= 127) then
-				pos = pos + 1
-			elseif (c >= 192 and c <= 223) then
-				pos = pos + 2
-			elseif (c >= 224 and c <= 239) then
-				pos = pos + 3
-			elseif (c >= 240 and c <= 247) then
-				pos = pos + 4
-			end
-			if (len == i) then break end
-		end
-
-		if (len == i and pos <= bytes) then
-			return string:sub(1, pos - 1)..(dots and '...' or '')
-		else
-			return string
-		end
-	end
-end
-
 local UNIT_SPELLCAST_START = function(self, event, unit, spell)
 	if(self.unit ~= unit) then return end
 
@@ -65,7 +35,7 @@ local UNIT_SPELLCAST_START = function(self, event, unit, spell)
 	castbar:SetMinMaxValues(0, max)
 	castbar:SetValue(0)
 
-	if(castbar.Text) then castbar.Text:SetText(utf8sub(text, math.floor((((32/245) * self:GetWidth()) / 9) * 6), true)) end
+	if(castbar.Text) then castbar.Text:SetText(text) end
 	if(castbar.Icon) then castbar.Icon:SetTexture(texture) end
 	if(castbar.Time) then castbar.Time:SetText() end
 

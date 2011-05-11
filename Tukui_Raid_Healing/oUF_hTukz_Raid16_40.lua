@@ -26,7 +26,7 @@ local function Shared(self, unit)
 	local health = CreateFrame('StatusBar', nil, self)
 	health:SetPoint("TOPLEFT")
 	health:SetPoint("TOPRIGHT")
-	health:Height(40)
+	health:Height(36)
 	health:SetStatusBarTexture(normTex)
 	self.Health = health
 	
@@ -274,7 +274,7 @@ oUF:Factory(function(self)
 				self:SetHeight(header:GetAttribute('initial-height'))
 			]],
 			'initial-width', ((TukuiChatBackgroundLeft:GetWidth() / 5) - 7),
-			'initial-height', T.Scale(40*T.raidscale),	
+			'initial-height', T.Scale(36*T.raidscale),	
 			"showParty", true,
 			"showPlayer", C["unitframes"].showplayerinparty, 
 			"showRaid", true,

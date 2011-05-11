@@ -2,7 +2,7 @@ local T, C, L = unpack(select(2, ...)) -- Import: T - functions, constants, vari
 -- just some random skin, not everything is skinned atm.
 
 local function SetModifiedBackdrop(self)
-	local color = RAID_CLASS_COLORS[T.myclass]
+	local color = CUSTOM_CLASS_COLORS[T.myclass]
 	self:SetBackdropColor(color.r, color.g, color.b, 0.15)
 	self:SetBackdropBorderColor(color.r, color.g, color.b)
 end
@@ -17,30 +17,30 @@ local function SkinButton(f)
 		local l = _G[f:GetName().."Left"]
 		local m = _G[f:GetName().."Middle"]
 		local r = _G[f:GetName().."Right"]
-		
-		
+
+
 		if l then l:SetAlpha(0) end
 		if m then m:SetAlpha(0) end
 		if r then r:SetAlpha(0) end
 	end
-	
+
 	if f.SetNormalTexture then
 		f:SetNormalTexture("")
 	end
-	
+
 	if f.SetHighlightTexture then
 		f:SetHighlightTexture("")
 	end
-	
+
 	if f.SetPushedTexture then
 		f:SetPushedTexture("")
 	end
-	
+
 	if f.SetDisabledTexture then
 		f:SetDisabledTexture("")
 	end
 	f:SetTemplate("Default")
-	
+
 	f:HookScript("OnEnter", SetModifiedBackdrop)
 	f:HookScript("OnLeave", SetOriginalBackdrop)
 end
@@ -49,7 +49,7 @@ local TukuiSkin = CreateFrame("Frame")
 TukuiSkin:RegisterEvent("ADDON_LOADED")
 TukuiSkin:SetScript("OnEvent", function(self, event, addon)
 	if IsAddOnLoaded("Skinner") or IsAddOnLoaded("Aurora") then return end
-	
+
 	-- stuff not in Blizzard load-on-demand
 	if addon == "Tukui" then
 		-- Blizzard frame we want to reskin
@@ -81,14 +81,14 @@ TukuiSkin:SetScript("OnEvent", function(self, event, addon)
 				SkinButton(_G["StaticPopup"..i.."Button"..j])
 			end
 		end
-		
+
 		for i = 1, getn(skins) do
 			_G[skins[i]]:SetTemplate("Default")
 			if _G[skins[i]] ~= _G["AutoCompleteBox"] and _G[skins[i]] ~= _G["BNToastFrame"] then -- frame to blacklist from create shadow function
 				_G[skins[i]]:CreateShadow("Default")
 			end
 		end
-		
+
 		local ChatMenus = {
 			"ChatMenu",
 			"EmoteMenu",
@@ -103,9 +103,10 @@ TukuiSkin:SetScript("OnEvent", function(self, event, addon)
 				_G[ChatMenus[i]]:HookScript("OnShow", function(self) self:SetTemplate("Default") end)
 			end
 		end
-		
+
 		-- reskin all esc/menu buttons
 		local BlizzardMenuButtons = {
+			"Help",
 			"Options", 
 			"SoundOptions", 
 			"UIOptions", 
@@ -118,7 +119,7 @@ TukuiSkin:SetScript("OnEvent", function(self, event, addon)
 			"Continue", 
 			"MacOptions"
 		}
-		
+
 		for i = 1, getn(BlizzardMenuButtons) do
 			local TukuiMenuButtons = _G["GameMenuButton"..BlizzardMenuButtons[i]]
 			if TukuiMenuButtons then
@@ -128,7 +129,7 @@ TukuiSkin:SetScript("OnEvent", function(self, event, addon)
 				_G["GameMenuButton"..BlizzardMenuButtons[i].."Right"]:SetAlpha(0)
 			end
 		end
-		
+
 		-- hide header textures and move text/buttons.
 		local BlizzardHeader = {
 			"GameMenuFrame", 
@@ -137,7 +138,7 @@ TukuiSkin:SetScript("OnEvent", function(self, event, addon)
 			"VideoOptionsFrame",
 			"ColorPickerFrame"
 		}
-		
+
 		for i = 1, getn(BlizzardHeader) do
 			local title = _G[BlizzardHeader[i].."Header"]			
 			if title then
@@ -150,7 +151,7 @@ TukuiSkin:SetScript("OnEvent", function(self, event, addon)
 				end
 			end
 		end
-		
+
 		-- here we reskin all "normal" buttons
 		local BlizzardButtons = {
 			"VideoOptionsFrameOkay", 
@@ -170,14 +171,14 @@ TukuiSkin:SetScript("OnEvent", function(self, event, addon)
 			"StackSplitOkayButton",
 			"StackSplitCancelButton",
 		}
-		
+
 		for i = 1, getn(BlizzardButtons) do
 		local TukuiButtons = _G[BlizzardButtons[i]]
 			if TukuiButtons then
 				SkinButton(TukuiButtons)
 			end
 		end
-		
+
 		-- if a button position or text is not really where we want, we move it here
 		_G["VideoOptionsFrameCancel"]:ClearAllPoints()
 		_G["VideoOptionsFrameCancel"]:SetPoint("RIGHT",_G["VideoOptionsFrameApply"],"LEFT",-4,0)		 
@@ -200,13 +201,13 @@ TukuiSkin:SetScript("OnEvent", function(self, event, addon)
 		_G["ColorPickerOkayButton"]:ClearAllPoints()
 		_G["ColorPickerCancelButton"]:SetPoint("BOTTOMRIGHT", ColorPickerFrame, "BOTTOMRIGHT", -6, 6)
 		_G["ColorPickerOkayButton"]:SetPoint("RIGHT",_G["ColorPickerCancelButton"],"LEFT", -4,0)		
-		
+
 		-- others
 		_G["ReadyCheckListenerFrame"]:SetAlpha(0)
 		_G["ReadyCheckFrame"]:HookScript("OnShow", function(self) if UnitIsUnit("player", self.initiator) then self:Hide() end end) -- bug fix, don't show it if initiator
 		_G["StackSplitFrame"]:GetRegions():Hide()
 	end
-	
+
 	-- mac menu/option panel, made by affli.
 	if IsMacClient() then
 		-- Skin main frame and reposition the header
@@ -250,7 +251,7 @@ TukuiSkin:SetScript("OnEvent", function(self, event, addon)
  
 		_G["MacOptionsFrameDefaults"]:SetWidth(96)
 		_G["MacOptionsFrameDefaults"]:SetHeight(22)
-		
+
 		-- why these buttons is using game menu template? oO
 		_G["MacOptionsButtonCompressLeft"]:SetAlpha(0)
 		_G["MacOptionsButtonCompressMiddle"]:SetAlpha(0)
