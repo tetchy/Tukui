@@ -1,5 +1,0 @@
-Updated oUF to 1.5.9.
-Commented out top viewport, killed the location text, made it so the tooltip reads CUSTOM_CLASS_COLORS not the ouf colors.
-Increaded buff/debuff sizes. My eyes are old.
-Changed fonts to Andika Basic. License in appropriate spot.
-Various tweaks to make it useable to me.
